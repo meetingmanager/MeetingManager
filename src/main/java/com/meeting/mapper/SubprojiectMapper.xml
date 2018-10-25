@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.meeting.mapper.SubprojiectMapper" >
+  <resultMap id="BaseResultMap" type="com.meeting.pojo.Subprojiect" >
+    <id column="snum" property="snum" jdbcType="INTEGER" />
+    <result column="mnum" property="mnum" jdbcType="BIGINT" />
+    <result column="sname" property="sname" jdbcType="VARCHAR" />
+    <result column="splace" property="splace" jdbcType="VARCHAR" />
+    <result column="stime" property="stime" jdbcType="TIMESTAMP" />
+    <result column="sconment" property="sconment" jdbcType="VARCHAR" />
+    <result column="sflow" property="sflow" jdbcType="VARCHAR" />
+    <result column="sguide" property="sguide" jdbcType="VARCHAR" />
+    <result column="mflag" property="mflag" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    snum, mnum, sname, splace, stime, sconment, sflow, sguide, mflag
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.meeting.pojo.SubprojiectExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from subprojiect
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from subprojiect
+    where snum = #{snum,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from subprojiect
+    where snum = #{snum,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.meeting.pojo.SubprojiectExample" >
+    delete from subprojiect
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.meeting.pojo.Subprojiect" >
+    insert into subprojiect (snum, mnum, sname, 
+      splace, stime, sconment, 
+      sflow, sguide, mflag
+      )
+    values (#{snum,jdbcType=INTEGER}, #{mnum,jdbcType=BIGINT}, #{sname,jdbcType=VARCHAR}, 
+      #{splace,jdbcType=VARCHAR}, #{stime,jdbcType=TIMESTAMP}, #{sconment,jdbcType=VARCHAR}, 
+      #{sflow,jdbcType=VARCHAR}, #{sguide,jdbcType=VARCHAR}, #{mflag,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.meeting.pojo.Subprojiect" >
+    insert into subprojiect
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="snum != null" >
+        snum,
+      </if>
+      <if test="mnum != null" >
+        mnum,
+      </if>
+      <if test="sname != null" >
+        sname,
+      </if>
+      <if test="splace != null" >
+        splace,
+      </if>
+      <if test="stime != null" >
+        stime,
+      </if>
+      <if test="sconment != null" >
+        sconment,
+      </if>
+      <if test="sflow != null" >
+        sflow,
+      </if>
+      <if test="sguide != null" >
+        sguide,
+      </if>
+      <if test="mflag != null" >
+        mflag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="snum != null" >
+        #{snum,jdbcType=INTEGER},
+      </if>
+      <if test="mnum != null" >
+        #{mnum,jdbcType=BIGINT},
+      </if>
+      <if test="sname != null" >
+        #{sname,jdbcType=VARCHAR},
+      </if>
+      <if test="splace != null" >
+        #{splace,jdbcType=VARCHAR},
+      </if>
+      <if test="stime != null" >
+        #{stime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sconment != null" >
+        #{sconment,jdbcType=VARCHAR},
+      </if>
+      <if test="sflow != null" >
+        #{sflow,jdbcType=VARCHAR},
+      </if>
+      <if test="sguide != null" >
+        #{sguide,jdbcType=VARCHAR},
+      </if>
+      <if test="mflag != null" >
+        #{mflag,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.meeting.pojo.SubprojiectExample" resultType="java.lang.Integer" >
+    select count(*) from subprojiect
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update subprojiect
+    <set >
+      <if test="record.snum != null" >
+        snum = #{record.snum,jdbcType=INTEGER},
+      </if>
+      <if test="record.mnum != null" >
+        mnum = #{record.mnum,jdbcType=BIGINT},
+      </if>
+      <if test="record.sname != null" >
+        sname = #{record.sname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.splace != null" >
+        splace = #{record.splace,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stime != null" >
+        stime = #{record.stime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.sconment != null" >
+        sconment = #{record.sconment,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sflow != null" >
+        sflow = #{record.sflow,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sguide != null" >
+        sguide = #{record.sguide,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mflag != null" >
+        mflag = #{record.mflag,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update subprojiect
+    set snum = #{record.snum,jdbcType=INTEGER},
+      mnum = #{record.mnum,jdbcType=BIGINT},
+      sname = #{record.sname,jdbcType=VARCHAR},
+      splace = #{record.splace,jdbcType=VARCHAR},
+      stime = #{record.stime,jdbcType=TIMESTAMP},
+      sconment = #{record.sconment,jdbcType=VARCHAR},
+      sflow = #{record.sflow,jdbcType=VARCHAR},
+      sguide = #{record.sguide,jdbcType=VARCHAR},
+      mflag = #{record.mflag,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.meeting.pojo.Subprojiect" >
+    update subprojiect
+    <set >
+      <if test="mnum != null" >
+        mnum = #{mnum,jdbcType=BIGINT},
+      </if>
+      <if test="sname != null" >
+        sname = #{sname,jdbcType=VARCHAR},
+      </if>
+      <if test="splace != null" >
+        splace = #{splace,jdbcType=VARCHAR},
+      </if>
+      <if test="stime != null" >
+        stime = #{stime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sconment != null" >
+        sconment = #{sconment,jdbcType=VARCHAR},
+      </if>
+      <if test="sflow != null" >
+        sflow = #{sflow,jdbcType=VARCHAR},
+      </if>
+      <if test="sguide != null" >
+        sguide = #{sguide,jdbcType=VARCHAR},
+      </if>
+      <if test="mflag != null" >
+        mflag = #{mflag,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where snum = #{snum,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.meeting.pojo.Subprojiect" >
+    update subprojiect
+    set mnum = #{mnum,jdbcType=BIGINT},
+      sname = #{sname,jdbcType=VARCHAR},
+      splace = #{splace,jdbcType=VARCHAR},
+      stime = #{stime,jdbcType=TIMESTAMP},
+      sconment = #{sconment,jdbcType=VARCHAR},
+      sflow = #{sflow,jdbcType=VARCHAR},
+      sguide = #{sguide,jdbcType=VARCHAR},
+      mflag = #{mflag,jdbcType=VARCHAR}
+    where snum = #{snum,jdbcType=INTEGER}
+  </update>
+</mapper>

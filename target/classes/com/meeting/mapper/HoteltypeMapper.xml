@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.meeting.mapper.HoteltypeMapper" >
+  <resultMap id="BaseResultMap" type="com.meeting.pojo.Hoteltype" >
+    <id column="htnum" property="htnum" jdbcType="INTEGER" />
+    <result column="mnum" property="mnum" jdbcType="BIGINT" />
+    <result column="httime" property="httime" jdbcType="VARCHAR" />
+    <result column="etplace" property="etplace" jdbcType="VARCHAR" />
+    <result column="ettype" property="ettype" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    htnum, mnum, httime, etplace, ettype
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.meeting.pojo.HoteltypeExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from hoteltype
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from hoteltype
+    where htnum = #{htnum,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from hoteltype
+    where htnum = #{htnum,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.meeting.pojo.HoteltypeExample" >
+    delete from hoteltype
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.meeting.pojo.Hoteltype" >
+    insert into hoteltype (htnum, mnum, httime, 
+      etplace, ettype)
+    values (#{htnum,jdbcType=INTEGER}, #{mnum,jdbcType=BIGINT}, #{httime,jdbcType=VARCHAR}, 
+      #{etplace,jdbcType=VARCHAR}, #{ettype,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.meeting.pojo.Hoteltype" >
+    insert into hoteltype
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="htnum != null" >
+        htnum,
+      </if>
+      <if test="mnum != null" >
+        mnum,
+      </if>
+      <if test="httime != null" >
+        httime,
+      </if>
+      <if test="etplace != null" >
+        etplace,
+      </if>
+      <if test="ettype != null" >
+        ettype,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="htnum != null" >
+        #{htnum,jdbcType=INTEGER},
+      </if>
+      <if test="mnum != null" >
+        #{mnum,jdbcType=BIGINT},
+      </if>
+      <if test="httime != null" >
+        #{httime,jdbcType=VARCHAR},
+      </if>
+      <if test="etplace != null" >
+        #{etplace,jdbcType=VARCHAR},
+      </if>
+      <if test="ettype != null" >
+        #{ettype,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.meeting.pojo.HoteltypeExample" resultType="java.lang.Integer" >
+    select count(*) from hoteltype
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update hoteltype
+    <set >
+      <if test="record.htnum != null" >
+        htnum = #{record.htnum,jdbcType=INTEGER},
+      </if>
+      <if test="record.mnum != null" >
+        mnum = #{record.mnum,jdbcType=BIGINT},
+      </if>
+      <if test="record.httime != null" >
+        httime = #{record.httime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.etplace != null" >
+        etplace = #{record.etplace,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ettype != null" >
+        ettype = #{record.ettype,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update hoteltype
+    set htnum = #{record.htnum,jdbcType=INTEGER},
+      mnum = #{record.mnum,jdbcType=BIGINT},
+      httime = #{record.httime,jdbcType=VARCHAR},
+      etplace = #{record.etplace,jdbcType=VARCHAR},
+      ettype = #{record.ettype,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.meeting.pojo.Hoteltype" >
+    update hoteltype
+    <set >
+      <if test="mnum != null" >
+        mnum = #{mnum,jdbcType=BIGINT},
+      </if>
+      <if test="httime != null" >
+        httime = #{httime,jdbcType=VARCHAR},
+      </if>
+      <if test="etplace != null" >
+        etplace = #{etplace,jdbcType=VARCHAR},
+      </if>
+      <if test="ettype != null" >
+        ettype = #{ettype,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where htnum = #{htnum,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.meeting.pojo.Hoteltype" >
+    update hoteltype
+    set mnum = #{mnum,jdbcType=BIGINT},
+      httime = #{httime,jdbcType=VARCHAR},
+      etplace = #{etplace,jdbcType=VARCHAR},
+      ettype = #{ettype,jdbcType=VARCHAR}
+    where htnum = #{htnum,jdbcType=INTEGER}
+  </update>
+</mapper>

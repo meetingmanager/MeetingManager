@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.meeting.mapper.MeetingMapper" >
+  <resultMap id="BaseResultMap" type="com.meeting.pojo.Meeting" >
+    <id column="mnum" property="mnum" jdbcType="BIGINT" />
+    <result column="mname" property="mname" jdbcType="VARCHAR" />
+    <result column="mtime" property="mtime" jdbcType="TIMESTAMP" />
+    <result column="mplace" property="mplace" jdbcType="VARCHAR" />
+    <result column="mcontent" property="mcontent" jdbcType="VARCHAR" />
+    <result column="mflow" property="mflow" jdbcType="VARCHAR" />
+    <result column="mguide" property="mguide" jdbcType="VARCHAR" />
+    <result column="mcreate" property="mcreate" jdbcType="TIMESTAMP" />
+    <result column="mend" property="mend" jdbcType="TIMESTAMP" />
+    <result column="mflag" property="mflag" jdbcType="INTEGER" />
+    <result column="meat" property="meat" jdbcType="INTEGER" />
+    <result column="mhotel" property="mhotel" jdbcType="INTEGER" />
+    <result column="mtype" property="mtype" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    mnum, mname, mtime, mplace, mcontent, mflow, mguide, mcreate, mend, mflag, meat, 
+    mhotel, mtype
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.meeting.pojo.MeetingExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from meeting
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from meeting
+    where mnum = #{mnum,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from meeting
+    where mnum = #{mnum,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.meeting.pojo.MeetingExample" >
+    delete from meeting
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.meeting.pojo.Meeting" >
+    insert into meeting (mnum, mname, mtime, 
+      mplace, mcontent, mflow, 
+      mguide, mcreate, mend, 
+      mflag, meat, mhotel, 
+      mtype)
+    values (#{mnum,jdbcType=BIGINT}, #{mname,jdbcType=VARCHAR}, #{mtime,jdbcType=TIMESTAMP}, 
+      #{mplace,jdbcType=VARCHAR}, #{mcontent,jdbcType=VARCHAR}, #{mflow,jdbcType=VARCHAR}, 
+      #{mguide,jdbcType=VARCHAR}, #{mcreate,jdbcType=TIMESTAMP}, #{mend,jdbcType=TIMESTAMP}, 
+      #{mflag,jdbcType=INTEGER}, #{meat,jdbcType=INTEGER}, #{mhotel,jdbcType=INTEGER}, 
+      #{mtype,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.meeting.pojo.Meeting" >
+    insert into meeting
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="mnum != null" >
+        mnum,
+      </if>
+      <if test="mname != null" >
+        mname,
+      </if>
+      <if test="mtime != null" >
+        mtime,
+      </if>
+      <if test="mplace != null" >
+        mplace,
+      </if>
+      <if test="mcontent != null" >
+        mcontent,
+      </if>
+      <if test="mflow != null" >
+        mflow,
+      </if>
+      <if test="mguide != null" >
+        mguide,
+      </if>
+      <if test="mcreate != null" >
+        mcreate,
+      </if>
+      <if test="mend != null" >
+        mend,
+      </if>
+      <if test="mflag != null" >
+        mflag,
+      </if>
+      <if test="meat != null" >
+        meat,
+      </if>
+      <if test="mhotel != null" >
+        mhotel,
+      </if>
+      <if test="mtype != null" >
+        mtype,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="mnum != null" >
+        #{mnum,jdbcType=BIGINT},
+      </if>
+      <if test="mname != null" >
+        #{mname,jdbcType=VARCHAR},
+      </if>
+      <if test="mtime != null" >
+        #{mtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mplace != null" >
+        #{mplace,jdbcType=VARCHAR},
+      </if>
+      <if test="mcontent != null" >
+        #{mcontent,jdbcType=VARCHAR},
+      </if>
+      <if test="mflow != null" >
+        #{mflow,jdbcType=VARCHAR},
+      </if>
+      <if test="mguide != null" >
+        #{mguide,jdbcType=VARCHAR},
+      </if>
+      <if test="mcreate != null" >
+        #{mcreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mend != null" >
+        #{mend,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mflag != null" >
+        #{mflag,jdbcType=INTEGER},
+      </if>
+      <if test="meat != null" >
+        #{meat,jdbcType=INTEGER},
+      </if>
+      <if test="mhotel != null" >
+        #{mhotel,jdbcType=INTEGER},
+      </if>
+      <if test="mtype != null" >
+        #{mtype,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.meeting.pojo.MeetingExample" resultType="java.lang.Integer" >
+    select count(*) from meeting
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update meeting
+    <set >
+      <if test="record.mnum != null" >
+        mnum = #{record.mnum,jdbcType=BIGINT},
+      </if>
+      <if test="record.mname != null" >
+        mname = #{record.mname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mtime != null" >
+        mtime = #{record.mtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.mplace != null" >
+        mplace = #{record.mplace,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mcontent != null" >
+        mcontent = #{record.mcontent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mflow != null" >
+        mflow = #{record.mflow,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mguide != null" >
+        mguide = #{record.mguide,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mcreate != null" >
+        mcreate = #{record.mcreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.mend != null" >
+        mend = #{record.mend,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.mflag != null" >
+        mflag = #{record.mflag,jdbcType=INTEGER},
+      </if>
+      <if test="record.meat != null" >
+        meat = #{record.meat,jdbcType=INTEGER},
+      </if>
+      <if test="record.mhotel != null" >
+        mhotel = #{record.mhotel,jdbcType=INTEGER},
+      </if>
+      <if test="record.mtype != null" >
+        mtype = #{record.mtype,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update meeting
+    set mnum = #{record.mnum,jdbcType=BIGINT},
+      mname = #{record.mname,jdbcType=VARCHAR},
+      mtime = #{record.mtime,jdbcType=TIMESTAMP},
+      mplace = #{record.mplace,jdbcType=VARCHAR},
+      mcontent = #{record.mcontent,jdbcType=VARCHAR},
+      mflow = #{record.mflow,jdbcType=VARCHAR},
+      mguide = #{record.mguide,jdbcType=VARCHAR},
+      mcreate = #{record.mcreate,jdbcType=TIMESTAMP},
+      mend = #{record.mend,jdbcType=TIMESTAMP},
+      mflag = #{record.mflag,jdbcType=INTEGER},
+      meat = #{record.meat,jdbcType=INTEGER},
+      mhotel = #{record.mhotel,jdbcType=INTEGER},
+      mtype = #{record.mtype,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.meeting.pojo.Meeting" >
+    update meeting
+    <set >
+      <if test="mname != null" >
+        mname = #{mname,jdbcType=VARCHAR},
+      </if>
+      <if test="mtime != null" >
+        mtime = #{mtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mplace != null" >
+        mplace = #{mplace,jdbcType=VARCHAR},
+      </if>
+      <if test="mcontent != null" >
+        mcontent = #{mcontent,jdbcType=VARCHAR},
+      </if>
+      <if test="mflow != null" >
+        mflow = #{mflow,jdbcType=VARCHAR},
+      </if>
+      <if test="mguide != null" >
+        mguide = #{mguide,jdbcType=VARCHAR},
+      </if>
+      <if test="mcreate != null" >
+        mcreate = #{mcreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mend != null" >
+        mend = #{mend,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mflag != null" >
+        mflag = #{mflag,jdbcType=INTEGER},
+      </if>
+      <if test="meat != null" >
+        meat = #{meat,jdbcType=INTEGER},
+      </if>
+      <if test="mhotel != null" >
+        mhotel = #{mhotel,jdbcType=INTEGER},
+      </if>
+      <if test="mtype != null" >
+        mtype = #{mtype,jdbcType=INTEGER},
+      </if>
+    </set>
+    where mnum = #{mnum,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.meeting.pojo.Meeting" >
+    update meeting
+    set mname = #{mname,jdbcType=VARCHAR},
+      mtime = #{mtime,jdbcType=TIMESTAMP},
+      mplace = #{mplace,jdbcType=VARCHAR},
+      mcontent = #{mcontent,jdbcType=VARCHAR},
+      mflow = #{mflow,jdbcType=VARCHAR},
+      mguide = #{mguide,jdbcType=VARCHAR},
+      mcreate = #{mcreate,jdbcType=TIMESTAMP},
+      mend = #{mend,jdbcType=TIMESTAMP},
+      mflag = #{mflag,jdbcType=INTEGER},
+      meat = #{meat,jdbcType=INTEGER},
+      mhotel = #{mhotel,jdbcType=INTEGER},
+      mtype = #{mtype,jdbcType=INTEGER}
+    where mnum = #{mnum,jdbcType=BIGINT}
+  </update>
+</mapper>

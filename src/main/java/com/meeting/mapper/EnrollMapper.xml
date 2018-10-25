@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.meeting.mapper.EnrollMapper" >
+  <resultMap id="BaseResultMap" type="com.meeting.pojo.Enroll" >
+    <id column="rnum" property="rnum" jdbcType="INTEGER" />
+    <result column="mnum" property="mnum" jdbcType="BIGINT" />
+    <result column="rname" property="rname" jdbcType="VARCHAR" />
+    <result column="rsex" property="rsex" jdbcType="VARCHAR" />
+    <result column="rphone" property="rphone" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    rnum, mnum, rname, rsex, rphone
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.meeting.pojo.EnrollExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from enroll
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from enroll
+    where rnum = #{rnum,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from enroll
+    where rnum = #{rnum,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.meeting.pojo.EnrollExample" >
+    delete from enroll
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.meeting.pojo.Enroll" >
+    insert into enroll (rnum, mnum, rname, 
+      rsex, rphone)
+    values (#{rnum,jdbcType=INTEGER}, #{mnum,jdbcType=BIGINT}, #{rname,jdbcType=VARCHAR}, 
+      #{rsex,jdbcType=VARCHAR}, #{rphone,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.meeting.pojo.Enroll" >
+    insert into enroll
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="rnum != null" >
+        rnum,
+      </if>
+      <if test="mnum != null" >
+        mnum,
+      </if>
+      <if test="rname != null" >
+        rname,
+      </if>
+      <if test="rsex != null" >
+        rsex,
+      </if>
+      <if test="rphone != null" >
+        rphone,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="rnum != null" >
+        #{rnum,jdbcType=INTEGER},
+      </if>
+      <if test="mnum != null" >
+        #{mnum,jdbcType=BIGINT},
+      </if>
+      <if test="rname != null" >
+        #{rname,jdbcType=VARCHAR},
+      </if>
+      <if test="rsex != null" >
+        #{rsex,jdbcType=VARCHAR},
+      </if>
+      <if test="rphone != null" >
+        #{rphone,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.meeting.pojo.EnrollExample" resultType="java.lang.Integer" >
+    select count(*) from enroll
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update enroll
+    <set >
+      <if test="record.rnum != null" >
+        rnum = #{record.rnum,jdbcType=INTEGER},
+      </if>
+      <if test="record.mnum != null" >
+        mnum = #{record.mnum,jdbcType=BIGINT},
+      </if>
+      <if test="record.rname != null" >
+        rname = #{record.rname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rsex != null" >
+        rsex = #{record.rsex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rphone != null" >
+        rphone = #{record.rphone,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update enroll
+    set rnum = #{record.rnum,jdbcType=INTEGER},
+      mnum = #{record.mnum,jdbcType=BIGINT},
+      rname = #{record.rname,jdbcType=VARCHAR},
+      rsex = #{record.rsex,jdbcType=VARCHAR},
+      rphone = #{record.rphone,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.meeting.pojo.Enroll" >
+    update enroll
+    <set >
+      <if test="mnum != null" >
+        mnum = #{mnum,jdbcType=BIGINT},
+      </if>
+      <if test="rname != null" >
+        rname = #{rname,jdbcType=VARCHAR},
+      </if>
+      <if test="rsex != null" >
+        rsex = #{rsex,jdbcType=VARCHAR},
+      </if>
+      <if test="rphone != null" >
+        rphone = #{rphone,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where rnum = #{rnum,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.meeting.pojo.Enroll" >
+    update enroll
+    set mnum = #{mnum,jdbcType=BIGINT},
+      rname = #{rname,jdbcType=VARCHAR},
+      rsex = #{rsex,jdbcType=VARCHAR},
+      rphone = #{rphone,jdbcType=VARCHAR}
+    where rnum = #{rnum,jdbcType=INTEGER}
+  </update>
+</mapper>

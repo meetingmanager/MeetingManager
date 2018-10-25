@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.meeting.mapper.ParticipantsMapper" >
+  <resultMap id="BaseResultMap" type="com.meeting.pojo.Participants" >
+    <id column="pnum" property="pnum" jdbcType="INTEGER" />
+    <result column="mnum" property="mnum" jdbcType="BIGINT" />
+    <result column="pname" property="pname" jdbcType="VARCHAR" />
+    <result column="psex" property="psex" jdbcType="VARCHAR" />
+    <result column="punit" property="punit" jdbcType="VARCHAR" />
+    <result column="ptitle" property="ptitle" jdbcType="VARCHAR" />
+    <result column="pphone" property="pphone" jdbcType="VARCHAR" />
+    <result column="pchoice" property="pchoice" jdbcType="VARCHAR" />
+    <result column="pcode" property="pcode" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    pnum, mnum, pname, psex, punit, ptitle, pphone, pchoice, pcode
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.meeting.pojo.ParticipantsExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from participants
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from participants
+    where pnum = #{pnum,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from participants
+    where pnum = #{pnum,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.meeting.pojo.ParticipantsExample" >
+    delete from participants
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.meeting.pojo.Participants" >
+    insert into participants (pnum, mnum, pname, 
+      psex, punit, ptitle, 
+      pphone, pchoice, pcode
+      )
+    values (#{pnum,jdbcType=INTEGER}, #{mnum,jdbcType=BIGINT}, #{pname,jdbcType=VARCHAR}, 
+      #{psex,jdbcType=VARCHAR}, #{punit,jdbcType=VARCHAR}, #{ptitle,jdbcType=VARCHAR}, 
+      #{pphone,jdbcType=VARCHAR}, #{pchoice,jdbcType=VARCHAR}, #{pcode,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.meeting.pojo.Participants" >
+    insert into participants
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="pnum != null" >
+        pnum,
+      </if>
+      <if test="mnum != null" >
+        mnum,
+      </if>
+      <if test="pname != null" >
+        pname,
+      </if>
+      <if test="psex != null" >
+        psex,
+      </if>
+      <if test="punit != null" >
+        punit,
+      </if>
+      <if test="ptitle != null" >
+        ptitle,
+      </if>
+      <if test="pphone != null" >
+        pphone,
+      </if>
+      <if test="pchoice != null" >
+        pchoice,
+      </if>
+      <if test="pcode != null" >
+        pcode,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="pnum != null" >
+        #{pnum,jdbcType=INTEGER},
+      </if>
+      <if test="mnum != null" >
+        #{mnum,jdbcType=BIGINT},
+      </if>
+      <if test="pname != null" >
+        #{pname,jdbcType=VARCHAR},
+      </if>
+      <if test="psex != null" >
+        #{psex,jdbcType=VARCHAR},
+      </if>
+      <if test="punit != null" >
+        #{punit,jdbcType=VARCHAR},
+      </if>
+      <if test="ptitle != null" >
+        #{ptitle,jdbcType=VARCHAR},
+      </if>
+      <if test="pphone != null" >
+        #{pphone,jdbcType=VARCHAR},
+      </if>
+      <if test="pchoice != null" >
+        #{pchoice,jdbcType=VARCHAR},
+      </if>
+      <if test="pcode != null" >
+        #{pcode,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.meeting.pojo.ParticipantsExample" resultType="java.lang.Integer" >
+    select count(*) from participants
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update participants
+    <set >
+      <if test="record.pnum != null" >
+        pnum = #{record.pnum,jdbcType=INTEGER},
+      </if>
+      <if test="record.mnum != null" >
+        mnum = #{record.mnum,jdbcType=BIGINT},
+      </if>
+      <if test="record.pname != null" >
+        pname = #{record.pname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.psex != null" >
+        psex = #{record.psex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.punit != null" >
+        punit = #{record.punit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ptitle != null" >
+        ptitle = #{record.ptitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pphone != null" >
+        pphone = #{record.pphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pchoice != null" >
+        pchoice = #{record.pchoice,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pcode != null" >
+        pcode = #{record.pcode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update participants
+    set pnum = #{record.pnum,jdbcType=INTEGER},
+      mnum = #{record.mnum,jdbcType=BIGINT},
+      pname = #{record.pname,jdbcType=VARCHAR},
+      psex = #{record.psex,jdbcType=VARCHAR},
+      punit = #{record.punit,jdbcType=VARCHAR},
+      ptitle = #{record.ptitle,jdbcType=VARCHAR},
+      pphone = #{record.pphone,jdbcType=VARCHAR},
+      pchoice = #{record.pchoice,jdbcType=VARCHAR},
+      pcode = #{record.pcode,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.meeting.pojo.Participants" >
+    update participants
+    <set >
+      <if test="mnum != null" >
+        mnum = #{mnum,jdbcType=BIGINT},
+      </if>
+      <if test="pname != null" >
+        pname = #{pname,jdbcType=VARCHAR},
+      </if>
+      <if test="psex != null" >
+        psex = #{psex,jdbcType=VARCHAR},
+      </if>
+      <if test="punit != null" >
+        punit = #{punit,jdbcType=VARCHAR},
+      </if>
+      <if test="ptitle != null" >
+        ptitle = #{ptitle,jdbcType=VARCHAR},
+      </if>
+      <if test="pphone != null" >
+        pphone = #{pphone,jdbcType=VARCHAR},
+      </if>
+      <if test="pchoice != null" >
+        pchoice = #{pchoice,jdbcType=VARCHAR},
+      </if>
+      <if test="pcode != null" >
+        pcode = #{pcode,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where pnum = #{pnum,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.meeting.pojo.Participants" >
+    update participants
+    set mnum = #{mnum,jdbcType=BIGINT},
+      pname = #{pname,jdbcType=VARCHAR},
+      psex = #{psex,jdbcType=VARCHAR},
+      punit = #{punit,jdbcType=VARCHAR},
+      ptitle = #{ptitle,jdbcType=VARCHAR},
+      pphone = #{pphone,jdbcType=VARCHAR},
+      pchoice = #{pchoice,jdbcType=VARCHAR},
+      pcode = #{pcode,jdbcType=VARCHAR}
+    where pnum = #{pnum,jdbcType=INTEGER}
+  </update>
+</mapper>
