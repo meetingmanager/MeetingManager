@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>会议管理系统</title>
@@ -10,7 +10,8 @@
     <!--引入js,配置成你的路径-->
     <script src="${pageContext.request.contextPath}/js/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.11.2.min.js"></script>
-    
+    <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.3.1.min.js"></script>
+
     <link rel="stylesheet" type="text/css"  href="${pageContext.request.contextPath}/css/style1.css"/>
     <style>
         .form {
@@ -67,6 +68,19 @@
         }
         .row{
         	display:none;
+        }
+        .gstate-change{
+            width: 13%;
+            height: 145px;
+            position: absolute !important;
+            border: 1px solid black;
+            border-radius:10px;
+            background-color: #fff;
+            display: none;
+            color: red;
+            margin-left: 160px;
+            margin-top: -135px;
+            /*z-index:999;*/
         }
     </style>
 </head>
@@ -175,6 +189,7 @@
                     var gtitle=item.gtitle;
                     var gintroduction=item.gintroduction;
                     var gstate=item.gstate;
+                    var greason=item.greason;
                     var tab=document.getElementById('tab');
                     var row=tab.insertRow(1);//需要这个row的值
                     row.id=item.gnum ; //把行id命名成标识符item.标识符属性名
@@ -188,14 +203,17 @@
                     sT.innerHTML=gphone;
                     eT.innerHTML=gtitle;
                     TY.innerHTML=gintroduction;
-                    AA.innerHTML="<div class='login-header'><a href='javascript:void(0);' class = 'a'>"+gstate+"</a></div>"+"<div class='row'>"+row.id+"</div>"
-                    				;
+                    AA.innerHTML="<div class='login-header'><a href='javascript:void(0);' class = 'a' onmousemove='gstate_show(this)' onmouseout='gstate_out(this)'>"+gstate+"</a>" +
+                        "<div class='gstate-change'>"+greason+"</div>"+
+                        "</div>"+
+                        "<div class='row'>"+row.id+"</div>";
                     option.innerHTML='<input type="button" class="btn btn-link" onclick="displayForm(this)" value="编辑">'+
                         	'<input type="button" class="btn btn-link" onclick="delForm(this)" value="删除">'
                 });
 			state();
             }
         });
+
     function state(){
     	H_login = {};
         H_login.openLogin = function(){
@@ -242,7 +260,7 @@
             				if (data.status==1){
             					location.href="${pageContext.request.contextPath}/guest/show";
             					//location.href="http://www.baidu.com";
-            				}  
+            				}
                         }
                     });
                 }
@@ -255,7 +273,6 @@
         };
         H_login.run();
     }
-    
     //点击添加
     function addForm() {
        // alert("添加");
@@ -297,7 +314,7 @@
 				if (data.status==1){
 					location.href="${pageContext.request.contextPath}/guest/show";
 					//location.href="http://www.baidu.com";
-				}  
+				}
             }
         });
 
@@ -346,11 +363,25 @@
 				if (data.status==1){
 					location.href="${pageContext.request.contextPath}/guest/show";
 					//location.href="http://www.baidu.com";
-				}  
+				}
 			}
             });
         }
 
+    }
+</script>
+<%--参会原因显示--%>
+<script>
+    function gstate_show(obj){
+        var gstate_reason = obj.parentNode.lastChild;
+        if (gstate_reason.innerHTML != ''){
+            gstate_reason.style.display = "block";
+        }
+    }
+
+    function gstate_out(obj){
+        var gstate_reason = obj.parentNode.lastChild;
+        gstate_reason.style.display = "none";
     }
 </script>
 </html>
