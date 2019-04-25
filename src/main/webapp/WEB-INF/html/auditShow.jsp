@@ -25,7 +25,11 @@
 		<div class="mtb10 clearfix" id="btn-operation">
 			<button id="excelExport" onclick="excelExport()" class="btn btn-blue btnEvent">导出Excel</button>
 			<span class="r-f search-style">
-				<input type="text" placeholder="输入关键字查询" value="" name="searchText"  class="input-text" /><a href="javascript:;" class="btn btn-blue btnEvent" name="searchEvent">搜索</a>
+				<form action="${pageContext.request.contextPath}/participants/findByPname">
+					<input type="text" placeholder="输入参会人员姓名查询" value="" name="pname"  class="input-text" />
+					<button type="submit" class="btn btn-blue btnEvent" name="searchEvent">搜索</button>
+				</form>
+
 			</span>
 		</div>
 		<table class="gallery table table_list table_striped table-bordered border " id="tableList" style="width: 100%;" cellpadding="0">

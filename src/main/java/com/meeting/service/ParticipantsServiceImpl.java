@@ -26,7 +26,21 @@ public class ParticipantsServiceImpl implements ParticipantsService{
 		participants = participantsMapper.selectByPrimaryKey(pnum);
 		return participants;
 	}
-	
+
+	/*
+	 * 根据参会人员号获取参会人员信息
+	 * */
+	@Override
+	public List<Participants> findPartipantsByPname(String pname,long mnum) {
+		pname = "%"+pname+"%";
+		ParticipantsExample participantsExample = new ParticipantsExample();
+		ParticipantsExample.Criteria criteria = participantsExample.createCriteria();
+		criteria.andPnameLike(pname);
+		criteria.andMnumEqualTo(mnum);
+		List<Participants> participants = participantsMapper.selectByExample(participantsExample);
+		return participants;
+	}
+
 	/*
 	 * 根据会议号获取该会议的参会人员
 	 * */

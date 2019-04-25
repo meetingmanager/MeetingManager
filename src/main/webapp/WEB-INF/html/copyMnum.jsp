@@ -11,22 +11,27 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css">
 <style type="text/css">
 	.copydiv{
-		border: 1px solid #fff;
+		border: 1px solid #000;
 		padding: 1em 0;
+	}
+	.bodystyle{
+		background-color: #ffffff;
+		color: #000;
+		font-size: 18px;
 	}
 </style>
 </head>
-<body>
+<body class="bodystyle">
 <header class="header">
 </header>
 <section class="container">
 	<div class="container">
-		<p>复制会议号</p>
+		<p style="margin: 60px 1px 10px;font-size: 24px;font-weight:bold">复制会议号</p>
 		<div class="row mt50">
-		  <div class="col-lg-12">
+		  <div class="col-lg-8">
 			<div class="copydiv">请加入会议号为${mnum}的会议</div><br>
 			<button type="button" class="btn btn-default" data-clipboard-action="copy" 
-			data-clipboard-target=".copydiv">复制</button>
+			data-clipboard-target=".copydiv" style="font-size: 18px">复制</button>
 	</div>
 </section>
 

@@ -8,6 +8,9 @@ public interface ParticipantsService {
 	
 	//根据参会人员号获取参会人员信息
 	public Participants findPartipantsByPnum(int pnum);
+
+	//根据参会人员姓名获取参会人员信息
+	public List<Participants> findPartipantsByPname(String pname,long mnum);
 	
 	//根据会议号获取参会人员
 	public List<Participants> findPartipantsByMnum(long mnum);

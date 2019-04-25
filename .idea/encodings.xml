@@ -2,9 +2,13 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/src/main/java/com/meeting/service/ImageServiceImpl.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/meeting/service/ParticipantsService.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/meeting/service/UserServiceImpl.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/meeting/web/EatController.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/meeting/web/MeetingController.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/meeting/web/PageController.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/meeting/web/ParticipantsController.java" charset="GBK" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/meeting/web/UserController.java" charset="GBK" />
+    <file url="PROJECT" charset="GBK" />
   </component>
 </project>

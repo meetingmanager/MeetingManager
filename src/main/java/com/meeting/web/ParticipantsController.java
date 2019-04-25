@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.meeting.pojo.ParticipantsExample;
 import org.apache.taglibs.standard.tag.common.fmt.ParseNumberSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -61,6 +62,36 @@ public class ParticipantsController {
 		}
 		
 		movi.setViewName("audit");
+		movi.addObject("list", jsonArray);
+		return movi;
+	}
+
+	/**
+	 * 根据pname获取该会议的参会人员
+	 * @param pname
+	 * @return
+	 */
+	@RequestMapping(value="findByPname")
+	public ModelAndView findParticipantsByPname(HttpSession session,String pname){
+		ModelAndView movi = new ModelAndView();
+		Meeting meeting = (Meeting) session.getAttribute("meeting");
+		List<Participants> list = participantsService.findPartipantsByPname(pname,meeting.getMnum());
+
+		List<ParticipantsList> participantsLists = new ArrayList<ParticipantsList>();
+		for(int i=0;i<list.size();i++){
+			ParticipantsList participantsList = new ParticipantsList();
+			Participants participants = new Participants();
+			participants = list.get(i);
+			participantsList.setImage(userService.findUserById(participants.getUserid()).getHeadphoto());
+			participantsList.setPflag(participants.getPflag());
+			participantsList.setPname(participants.getPname());
+			participantsList.setPsex(participants.getPsex());
+			participantsList.setPphone(participants.getPphone());
+			participantsLists.add(participantsList);
+		}
+		JSONArray jsonArray = JSONArray.fromObject(participantsLists);
+
+		movi.setViewName("auditShow");
 		movi.addObject("list", jsonArray);
 		return movi;
 	}
@@ -136,7 +167,10 @@ public class ParticipantsController {
 		movi.addObject("list", jsonArray);
 		return movi;
 	}
-	
+
+
+
+
 	/*
 	 * 根据会议号，返回参会人员状态码为1（批准参会）和2（拒绝参会）
 	 * */
