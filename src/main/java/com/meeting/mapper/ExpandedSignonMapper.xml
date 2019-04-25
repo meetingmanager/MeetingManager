@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.meeting.mapper.ExpandedSignonMapper" >
+  <resultMap id="SignonListMap" type="com.meeting.pojo.ExpandedSignon" >
+    <id column="signId" property="signid" jdbcType="INTEGER" />
+    <result column="userid" property="userid" jdbcType="VARCHAR" />
+    <result column="mnum" property="mnum" jdbcType="BIGINT" />
+    <result column="sflag" property="sflag" jdbcType="INTEGER" />
+    <result column="signtime" property="signtime" jdbcType="TIMESTAMP" /> 
+    <association property="user" javaType="com.meeting.pojo.User">
+         <id column="userid" property="userid" jdbcType="VARCHAR" />
+		 <result column="phone" property="phone" jdbcType="VARCHAR" />
+		 <result column="email" property="email" jdbcType="VARCHAR" />
+		 <result column="username" property="username" jdbcType="VARCHAR" />
+		 <result column="userseat" property="userseat" jdbcType="VARCHAR" />
+		 <result column="usersex" property="usersex" jdbcType="VARCHAR" />
+		 <result column="headphoto" property="headphoto" jdbcType="VARCHAR" />
+    </association>
+  </resultMap> 
+  <sql id="signon_column_list">
+  	signid,username,phone,usersex,headphoto,sflag,signtime
+  </sql> 
+  <select id="selcetSignonList" resultMap="SignonListMap" parameterType="java.util.Map">
+  	select
+  	<include refid="signon_column_list"/>
+  	from `user`,signon
+  	where `user`.userid = signon.userid 
+  	AND signon.mnum = #{mnum,jdbcType=BIGINT}
+  	limit #{startNum,jdbcType=BIGINT},#{endNum,jdbcType=BIGINT}
+  </select>
+  <select id="countSignonList" resultType="java.lang.Integer" parameterType="java.lang.Long">
+  	select count(*) from `user`,signon
+  	where `user`.userid = signon.userid
+  	and signon.mnum = #{mnum,jdbcType=BIGINT}
+  </select>
+</mapper>

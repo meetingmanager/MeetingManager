@@ -10,7 +10,7 @@ public interface EatMapper {
 
     int deleteByExample(EatExample example);
 
-    int deleteByPrimaryKey(Integer eeatnum);
+    int deleteByPrimaryKey(Integer eatnum);
 
     int insert(Eat record);
 
@@ -18,7 +18,7 @@ public interface EatMapper {
 
     List<Eat> selectByExample(EatExample example);
 
-    Eat selectByPrimaryKey(Integer eeatnum);
+    Eat selectByPrimaryKey(Integer eatnum);
 
     int updateByExampleSelective(@Param("record") Eat record, @Param("example") EatExample example);
 

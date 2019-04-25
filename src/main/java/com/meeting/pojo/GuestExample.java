@@ -514,53 +514,133 @@ public class GuestExample {
             return (Criteria) this;
         }
 
-        public Criteria andGstateEqualTo(Integer value) {
+        public Criteria andGstateEqualTo(String value) {
             addCriterion("gstate =", value, "gstate");
             return (Criteria) this;
         }
 
-        public Criteria andGstateNotEqualTo(Integer value) {
+        public Criteria andGstateNotEqualTo(String value) {
             addCriterion("gstate <>", value, "gstate");
             return (Criteria) this;
         }
 
-        public Criteria andGstateGreaterThan(Integer value) {
+        public Criteria andGstateGreaterThan(String value) {
             addCriterion("gstate >", value, "gstate");
             return (Criteria) this;
         }
 
-        public Criteria andGstateGreaterThanOrEqualTo(Integer value) {
+        public Criteria andGstateGreaterThanOrEqualTo(String value) {
             addCriterion("gstate >=", value, "gstate");
             return (Criteria) this;
         }
 
-        public Criteria andGstateLessThan(Integer value) {
+        public Criteria andGstateLessThan(String value) {
             addCriterion("gstate <", value, "gstate");
             return (Criteria) this;
         }
 
-        public Criteria andGstateLessThanOrEqualTo(Integer value) {
+        public Criteria andGstateLessThanOrEqualTo(String value) {
             addCriterion("gstate <=", value, "gstate");
             return (Criteria) this;
         }
 
-        public Criteria andGstateIn(List<Integer> values) {
+        public Criteria andGstateLike(String value) {
+            addCriterion("gstate like", value, "gstate");
+            return (Criteria) this;
+        }
+
+        public Criteria andGstateNotLike(String value) {
+            addCriterion("gstate not like", value, "gstate");
+            return (Criteria) this;
+        }
+
+        public Criteria andGstateIn(List<String> values) {
             addCriterion("gstate in", values, "gstate");
             return (Criteria) this;
         }
 
-        public Criteria andGstateNotIn(List<Integer> values) {
+        public Criteria andGstateNotIn(List<String> values) {
             addCriterion("gstate not in", values, "gstate");
             return (Criteria) this;
         }
 
-        public Criteria andGstateBetween(Integer value1, Integer value2) {
+        public Criteria andGstateBetween(String value1, String value2) {
             addCriterion("gstate between", value1, value2, "gstate");
             return (Criteria) this;
         }
 
-        public Criteria andGstateNotBetween(Integer value1, Integer value2) {
+        public Criteria andGstateNotBetween(String value1, String value2) {
             addCriterion("gstate not between", value1, value2, "gstate");
+            return (Criteria) this;
+        }
+
+        public Criteria andGreasonIsNull() {
+            addCriterion("greason is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGreasonIsNotNull() {
+            addCriterion("greason is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGreasonEqualTo(String value) {
+            addCriterion("greason =", value, "greason");
+            return (Criteria) this;
+        }
+
+        public Criteria andGreasonNotEqualTo(String value) {
+            addCriterion("greason <>", value, "greason");
+            return (Criteria) this;
+        }
+
+        public Criteria andGreasonGreaterThan(String value) {
+            addCriterion("greason >", value, "greason");
+            return (Criteria) this;
+        }
+
+        public Criteria andGreasonGreaterThanOrEqualTo(String value) {
+            addCriterion("greason >=", value, "greason");
+            return (Criteria) this;
+        }
+
+        public Criteria andGreasonLessThan(String value) {
+            addCriterion("greason <", value, "greason");
+            return (Criteria) this;
+        }
+
+        public Criteria andGreasonLessThanOrEqualTo(String value) {
+            addCriterion("greason <=", value, "greason");
+            return (Criteria) this;
+        }
+
+        public Criteria andGreasonLike(String value) {
+            addCriterion("greason like", value, "greason");
+            return (Criteria) this;
+        }
+
+        public Criteria andGreasonNotLike(String value) {
+            addCriterion("greason not like", value, "greason");
+            return (Criteria) this;
+        }
+
+        public Criteria andGreasonIn(List<String> values) {
+            addCriterion("greason in", values, "greason");
+            return (Criteria) this;
+        }
+
+        public Criteria andGreasonNotIn(List<String> values) {
+            addCriterion("greason not in", values, "greason");
+            return (Criteria) this;
+        }
+
+        public Criteria andGreasonBetween(String value1, String value2) {
+            addCriterion("greason between", value1, value2, "greason");
+            return (Criteria) this;
+        }
+
+        public Criteria andGreasonNotBetween(String value1, String value2) {
+            addCriterion("greason not between", value1, value2, "greason");
             return (Criteria) this;
         }
     }

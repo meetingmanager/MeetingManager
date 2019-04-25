@@ -15,6 +15,8 @@
     <result column="meat" property="meat" jdbcType="INTEGER" />
     <result column="mhotel" property="mhotel" jdbcType="INTEGER" />
     <result column="mtype" property="mtype" jdbcType="INTEGER" />
+    <result column="userid" property="userid" jdbcType="VARCHAR" />
+    <result column="mimage" property="mimage" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -76,7 +78,7 @@
   </sql>
   <sql id="Base_Column_List" >
     mnum, mname, mtime, mplace, mcontent, mflow, mguide, mcreate, mend, mflag, meat, 
-    mhotel, mtype
+    mhotel, mtype, userid, mimage
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.meeting.pojo.MeetingExample" >
     select
@@ -113,12 +115,14 @@
       mplace, mcontent, mflow, 
       mguide, mcreate, mend, 
       mflag, meat, mhotel, 
-      mtype)
+      mtype, userid, mimage
+      )
     values (#{mnum,jdbcType=BIGINT}, #{mname,jdbcType=VARCHAR}, #{mtime,jdbcType=TIMESTAMP}, 
       #{mplace,jdbcType=VARCHAR}, #{mcontent,jdbcType=VARCHAR}, #{mflow,jdbcType=VARCHAR}, 
       #{mguide,jdbcType=VARCHAR}, #{mcreate,jdbcType=TIMESTAMP}, #{mend,jdbcType=TIMESTAMP}, 
       #{mflag,jdbcType=INTEGER}, #{meat,jdbcType=INTEGER}, #{mhotel,jdbcType=INTEGER}, 
-      #{mtype,jdbcType=INTEGER})
+      #{mtype,jdbcType=INTEGER}, #{userid,jdbcType=VARCHAR}, #{mimage,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.meeting.pojo.Meeting" >
     insert into meeting
@@ -162,6 +166,12 @@
       <if test="mtype != null" >
         mtype,
       </if>
+      <if test="userid != null" >
+        userid,
+      </if>
+      <if test="mimage != null" >
+        mimage,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="mnum != null" >
@@ -202,6 +212,12 @@
       </if>
       <if test="mtype != null" >
         #{mtype,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="mimage != null" >
+        #{mimage,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -253,6 +269,12 @@
       <if test="record.mtype != null" >
         mtype = #{record.mtype,jdbcType=INTEGER},
       </if>
+      <if test="record.userid != null" >
+        userid = #{record.userid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.mimage != null" >
+        mimage = #{record.mimage,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -272,7 +294,9 @@
       mflag = #{record.mflag,jdbcType=INTEGER},
       meat = #{record.meat,jdbcType=INTEGER},
       mhotel = #{record.mhotel,jdbcType=INTEGER},
-      mtype = #{record.mtype,jdbcType=INTEGER}
+      mtype = #{record.mtype,jdbcType=INTEGER},
+      userid = #{record.userid,jdbcType=VARCHAR},
+      mimage = #{record.mimage,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -316,6 +340,12 @@
       <if test="mtype != null" >
         mtype = #{mtype,jdbcType=INTEGER},
       </if>
+      <if test="userid != null" >
+        userid = #{userid,jdbcType=VARCHAR},
+      </if>
+      <if test="mimage != null" >
+        mimage = #{mimage,jdbcType=VARCHAR},
+      </if>
     </set>
     where mnum = #{mnum,jdbcType=BIGINT}
   </update>
@@ -332,7 +362,9 @@
       mflag = #{mflag,jdbcType=INTEGER},
       meat = #{meat,jdbcType=INTEGER},
       mhotel = #{mhotel,jdbcType=INTEGER},
-      mtype = #{mtype,jdbcType=INTEGER}
+      mtype = #{mtype,jdbcType=INTEGER},
+      userid = #{userid,jdbcType=VARCHAR},
+      mimage = #{mimage,jdbcType=VARCHAR}
     where mnum = #{mnum,jdbcType=BIGINT}
   </update>
 </mapper>

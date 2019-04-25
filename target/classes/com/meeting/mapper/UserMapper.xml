@@ -6,6 +6,10 @@
     <result column="userpw" property="userpw" jdbcType="VARCHAR" />
     <result column="phone" property="phone" jdbcType="VARCHAR" />
     <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="userseat" property="userseat" jdbcType="VARCHAR" />
+    <result column="usersex" property="usersex" jdbcType="VARCHAR" />
+    <result column="headphoto" property="headphoto" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -66,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    userid, userpw, phone, email
+    userid, userpw, phone, email, username, userseat, usersex, headphoto
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.meeting.pojo.UserExample" >
     select
@@ -100,9 +104,11 @@
   </delete>
   <insert id="insert" parameterType="com.meeting.pojo.User" >
     insert into user (userid, userpw, phone, 
-      email)
+      email, username, userseat, 
+      usersex, headphoto)
     values (#{userid,jdbcType=VARCHAR}, #{userpw,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
-      #{email,jdbcType=VARCHAR})
+      #{email,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{userseat,jdbcType=VARCHAR}, 
+      #{usersex,jdbcType=VARCHAR}, #{headphoto,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.meeting.pojo.User" >
     insert into user
@@ -119,6 +125,18 @@
       <if test="email != null" >
         email,
       </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="userseat != null" >
+        userseat,
+      </if>
+      <if test="usersex != null" >
+        usersex,
+      </if>
+      <if test="headphoto != null" >
+        headphoto,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="userid != null" >
@@ -132,6 +150,18 @@
       </if>
       <if test="email != null" >
         #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="userseat != null" >
+        #{userseat,jdbcType=VARCHAR},
+      </if>
+      <if test="usersex != null" >
+        #{usersex,jdbcType=VARCHAR},
+      </if>
+      <if test="headphoto != null" >
+        #{headphoto,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -156,6 +186,18 @@
       <if test="record.email != null" >
         email = #{record.email,jdbcType=VARCHAR},
       </if>
+      <if test="record.username != null" >
+        username = #{record.username,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userseat != null" >
+        userseat = #{record.userseat,jdbcType=VARCHAR},
+      </if>
+      <if test="record.usersex != null" >
+        usersex = #{record.usersex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.headphoto != null" >
+        headphoto = #{record.headphoto,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -166,7 +208,11 @@
     set userid = #{record.userid,jdbcType=VARCHAR},
       userpw = #{record.userpw,jdbcType=VARCHAR},
       phone = #{record.phone,jdbcType=VARCHAR},
-      email = #{record.email,jdbcType=VARCHAR}
+      email = #{record.email,jdbcType=VARCHAR},
+      username = #{record.username,jdbcType=VARCHAR},
+      userseat = #{record.userseat,jdbcType=VARCHAR},
+      usersex = #{record.usersex,jdbcType=VARCHAR},
+      headphoto = #{record.headphoto,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -183,6 +229,18 @@
       <if test="email != null" >
         email = #{email,jdbcType=VARCHAR},
       </if>
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="userseat != null" >
+        userseat = #{userseat,jdbcType=VARCHAR},
+      </if>
+      <if test="usersex != null" >
+        usersex = #{usersex,jdbcType=VARCHAR},
+      </if>
+      <if test="headphoto != null" >
+        headphoto = #{headphoto,jdbcType=VARCHAR},
+      </if>
     </set>
     where userid = #{userid,jdbcType=VARCHAR}
   </update>
@@ -190,7 +248,11 @@
     update user
     set userpw = #{userpw,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
-      email = #{email,jdbcType=VARCHAR}
+      email = #{email,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      userseat = #{userseat,jdbcType=VARCHAR},
+      usersex = #{usersex,jdbcType=VARCHAR},
+      headphoto = #{headphoto,jdbcType=VARCHAR}
     where userid = #{userid,jdbcType=VARCHAR}
   </update>
 </mapper>

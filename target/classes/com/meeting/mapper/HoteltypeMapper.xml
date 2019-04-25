@@ -4,9 +4,10 @@
   <resultMap id="BaseResultMap" type="com.meeting.pojo.Hoteltype" >
     <id column="htnum" property="htnum" jdbcType="INTEGER" />
     <result column="mnum" property="mnum" jdbcType="BIGINT" />
-    <result column="httime" property="httime" jdbcType="VARCHAR" />
-    <result column="etplace" property="etplace" jdbcType="VARCHAR" />
-    <result column="ettype" property="ettype" jdbcType="VARCHAR" />
+    <result column="hotelplace" property="hotelplace" jdbcType="VARCHAR" />
+    <result column="hoteltype" property="hoteltype" jdbcType="VARCHAR" />
+    <result column="starttime" property="starttime" jdbcType="DATE" />
+    <result column="endtime" property="endtime" jdbcType="DATE" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -67,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    htnum, mnum, httime, etplace, ettype
+    htnum, mnum, hotelplace, hoteltype, starttime, endtime
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.meeting.pojo.HoteltypeExample" >
     select
@@ -100,10 +101,12 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.meeting.pojo.Hoteltype" >
-    insert into hoteltype (htnum, mnum, httime, 
-      etplace, ettype)
-    values (#{htnum,jdbcType=INTEGER}, #{mnum,jdbcType=BIGINT}, #{httime,jdbcType=VARCHAR}, 
-      #{etplace,jdbcType=VARCHAR}, #{ettype,jdbcType=VARCHAR})
+    insert into hoteltype (htnum, mnum, hotelplace, 
+      hoteltype, starttime, endtime
+      )
+    values (#{htnum,jdbcType=INTEGER}, #{mnum,jdbcType=BIGINT}, #{hotelplace,jdbcType=VARCHAR}, 
+      #{hoteltype,jdbcType=VARCHAR}, #{starttime,jdbcType=DATE}, #{endtime,jdbcType=DATE}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.meeting.pojo.Hoteltype" >
     insert into hoteltype
@@ -114,14 +117,17 @@
       <if test="mnum != null" >
         mnum,
       </if>
-      <if test="httime != null" >
-        httime,
+      <if test="hotelplace != null" >
+        hotelplace,
       </if>
-      <if test="etplace != null" >
-        etplace,
+      <if test="hoteltype != null" >
+        hoteltype,
       </if>
-      <if test="ettype != null" >
-        ettype,
+      <if test="starttime != null" >
+        starttime,
+      </if>
+      <if test="endtime != null" >
+        endtime,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -131,14 +137,17 @@
       <if test="mnum != null" >
         #{mnum,jdbcType=BIGINT},
       </if>
-      <if test="httime != null" >
-        #{httime,jdbcType=VARCHAR},
+      <if test="hotelplace != null" >
+        #{hotelplace,jdbcType=VARCHAR},
       </if>
-      <if test="etplace != null" >
-        #{etplace,jdbcType=VARCHAR},
+      <if test="hoteltype != null" >
+        #{hoteltype,jdbcType=VARCHAR},
       </if>
-      <if test="ettype != null" >
-        #{ettype,jdbcType=VARCHAR},
+      <if test="starttime != null" >
+        #{starttime,jdbcType=DATE},
+      </if>
+      <if test="endtime != null" >
+        #{endtime,jdbcType=DATE},
       </if>
     </trim>
   </insert>
@@ -157,14 +166,17 @@
       <if test="record.mnum != null" >
         mnum = #{record.mnum,jdbcType=BIGINT},
       </if>
-      <if test="record.httime != null" >
-        httime = #{record.httime,jdbcType=VARCHAR},
+      <if test="record.hotelplace != null" >
+        hotelplace = #{record.hotelplace,jdbcType=VARCHAR},
       </if>
-      <if test="record.etplace != null" >
-        etplace = #{record.etplace,jdbcType=VARCHAR},
+      <if test="record.hoteltype != null" >
+        hoteltype = #{record.hoteltype,jdbcType=VARCHAR},
       </if>
-      <if test="record.ettype != null" >
-        ettype = #{record.ettype,jdbcType=VARCHAR},
+      <if test="record.starttime != null" >
+        starttime = #{record.starttime,jdbcType=DATE},
+      </if>
+      <if test="record.endtime != null" >
+        endtime = #{record.endtime,jdbcType=DATE},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -175,9 +187,10 @@
     update hoteltype
     set htnum = #{record.htnum,jdbcType=INTEGER},
       mnum = #{record.mnum,jdbcType=BIGINT},
-      httime = #{record.httime,jdbcType=VARCHAR},
-      etplace = #{record.etplace,jdbcType=VARCHAR},
-      ettype = #{record.ettype,jdbcType=VARCHAR}
+      hotelplace = #{record.hotelplace,jdbcType=VARCHAR},
+      hoteltype = #{record.hoteltype,jdbcType=VARCHAR},
+      starttime = #{record.starttime,jdbcType=DATE},
+      endtime = #{record.endtime,jdbcType=DATE}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -188,14 +201,17 @@
       <if test="mnum != null" >
         mnum = #{mnum,jdbcType=BIGINT},
       </if>
-      <if test="httime != null" >
-        httime = #{httime,jdbcType=VARCHAR},
+      <if test="hotelplace != null" >
+        hotelplace = #{hotelplace,jdbcType=VARCHAR},
       </if>
-      <if test="etplace != null" >
-        etplace = #{etplace,jdbcType=VARCHAR},
+      <if test="hoteltype != null" >
+        hoteltype = #{hoteltype,jdbcType=VARCHAR},
       </if>
-      <if test="ettype != null" >
-        ettype = #{ettype,jdbcType=VARCHAR},
+      <if test="starttime != null" >
+        starttime = #{starttime,jdbcType=DATE},
+      </if>
+      <if test="endtime != null" >
+        endtime = #{endtime,jdbcType=DATE},
       </if>
     </set>
     where htnum = #{htnum,jdbcType=INTEGER}
@@ -203,9 +219,10 @@
   <update id="updateByPrimaryKey" parameterType="com.meeting.pojo.Hoteltype" >
     update hoteltype
     set mnum = #{mnum,jdbcType=BIGINT},
-      httime = #{httime,jdbcType=VARCHAR},
-      etplace = #{etplace,jdbcType=VARCHAR},
-      ettype = #{ettype,jdbcType=VARCHAR}
+      hotelplace = #{hotelplace,jdbcType=VARCHAR},
+      hoteltype = #{hoteltype,jdbcType=VARCHAR},
+      starttime = #{starttime,jdbcType=DATE},
+      endtime = #{endtime,jdbcType=DATE}
     where htnum = #{htnum,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -1,0 +1,62 @@
+html, body, div, ul, li, h1, h2, h3, h4, h5, h6, p, dl, dt, dd, ol, form, input, textarea, th, td, select {
+   	margin: 0;
+    	padding: 0;
+}
+body{
+	background-color: #f4f6f9;
+}
+form{
+	margin: 0 auto;
+	background-color: white;
+	margin-top: 20px;
+	width:50%;
+}
+form .name{
+	font-size: 18px;
+	padding-left: 25px;
+	height: 50px;
+	line-height: 50px;
+}
+form .body{
+	width: 93%;
+	margin: 0 auto;
+	border: 1px solid black;
+	border-bottom:none;
+}
+form .body .human{
+	width: 100%;
+	border-bottom: 1px solid black;
+	line-height: 35px;
+	text-align: center;
+}
+form .body .human .humanName,.humanName1{
+	width:50%;
+	float: left;
+	border-right: 1px solid black;
+}
+form .body .human .judge,.judge1{
+	width: 49%;
+	float: left;
+}
+.cl{
+	clear: both;
+}
+form .body .human .judge input{
+	width: 60px;
+	height: 25px;
+	line-height: 25px;
+	border: hidden;
+	cursor: pointer;
+	border-radius:5px;
+	background-color: #aaa;
+	margin-right: 10px;
+}
+form .body .human .judge input:hover{
+	background-color: skyblue;
+}
+form .body .human .judge input:focus{
+	background-color: skyblue;
+}
+.pnum{
+	display: none;
+}

@@ -2,13 +2,17 @@ package com.meeting.pojo;
 
 import java.util.Date;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 public class Eattype {
     private Integer etnum;
 
     private Long mnum;
-
+    //用阿里的toJson函数转为json格式，这里注解转换时指定为date类型的某种特定格式
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date ettimestart;
-
+    
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date ettimeend;
 
     private String etplace;

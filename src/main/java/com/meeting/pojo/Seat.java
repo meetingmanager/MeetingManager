@@ -5,9 +5,9 @@ public class Seat {
 
     private Long mnum;
 
-    private Integer snum;
-
     private Integer pnum;
+
+    private Integer seatnum;
 
     public Integer getSenum() {
         return senum;
@@ -25,19 +25,19 @@ public class Seat {
         this.mnum = mnum;
     }
 
-    public Integer getSnum() {
-        return snum;
-    }
-
-    public void setSnum(Integer snum) {
-        this.snum = snum;
-    }
-
     public Integer getPnum() {
         return pnum;
     }
 
     public void setPnum(Integer pnum) {
         this.pnum = pnum;
+    }
+
+    public Integer getSeatnum() {
+        return seatnum;
+    }
+
+    public void setSeatnum(Integer seatnum) {
+        this.seatnum = seatnum;
     }
 }

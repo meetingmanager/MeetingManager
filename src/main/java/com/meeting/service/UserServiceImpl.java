@@ -14,17 +14,20 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	UserMapper userMapper;
+	@Override
 	public void InsertUser(User user) {
 		// TODO Auto-generated method stub
 		userMapper.insert(user);
 
 	}
-	
+	@Override
 	public User findUserById(String userid) {
-		// TODO Auto-generated method stub
-		return userMapper.selectByPrimaryKey(userid);
+		// TODO Auto-generated method stub 
+		User user = userMapper.selectByPrimaryKey(userid);
+	
+		return user;
 	}
-
+	@Override
 	public User findUserByPhone(String phone) {
 		// TODO Auto-generated method stub
 		UserExample userExample = new UserExample();
@@ -35,6 +38,15 @@ public class UserServiceImpl implements UserService {
 			return user.get(0);
 		}
 		return null;
+	}
+	
+	/*
+	 * 修改用户信息
+	 * */
+	@Override
+	public void updateUser(User user) {
+		// TODO Auto-generated method stub
+		userMapper.updateByPrimaryKey(user);
 	}
 
 }

@@ -11,6 +11,8 @@
     <result column="pphone" property="pphone" jdbcType="VARCHAR" />
     <result column="pchoice" property="pchoice" jdbcType="VARCHAR" />
     <result column="pcode" property="pcode" jdbcType="VARCHAR" />
+    <result column="pflag" property="pflag" jdbcType="INTEGER" />
+    <result column="userid" property="userid" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -71,7 +73,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    pnum, mnum, pname, psex, punit, ptitle, pphone, pchoice, pcode
+    pnum, mnum, pname, psex, punit, ptitle, pphone, pchoice, pcode, pflag, userid
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.meeting.pojo.ParticipantsExample" >
     select
@@ -106,12 +108,12 @@
   <insert id="insert" parameterType="com.meeting.pojo.Participants" >
     insert into participants (pnum, mnum, pname, 
       psex, punit, ptitle, 
-      pphone, pchoice, pcode
-      )
+      pphone, pchoice, pcode, 
+      pflag, userid)
     values (#{pnum,jdbcType=INTEGER}, #{mnum,jdbcType=BIGINT}, #{pname,jdbcType=VARCHAR}, 
       #{psex,jdbcType=VARCHAR}, #{punit,jdbcType=VARCHAR}, #{ptitle,jdbcType=VARCHAR}, 
-      #{pphone,jdbcType=VARCHAR}, #{pchoice,jdbcType=VARCHAR}, #{pcode,jdbcType=VARCHAR}
-      )
+      #{pphone,jdbcType=VARCHAR}, #{pchoice,jdbcType=VARCHAR}, #{pcode,jdbcType=VARCHAR}, 
+      #{pflag,jdbcType=INTEGER}, #{userid,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.meeting.pojo.Participants" >
     insert into participants
@@ -143,6 +145,12 @@
       <if test="pcode != null" >
         pcode,
       </if>
+      <if test="pflag != null" >
+        pflag,
+      </if>
+      <if test="userid != null" >
+        userid,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="pnum != null" >
@@ -171,6 +179,12 @@
       </if>
       <if test="pcode != null" >
         #{pcode,jdbcType=VARCHAR},
+      </if>
+      <if test="pflag != null" >
+        #{pflag,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null" >
+        #{userid,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -210,6 +224,12 @@
       <if test="record.pcode != null" >
         pcode = #{record.pcode,jdbcType=VARCHAR},
       </if>
+      <if test="record.pflag != null" >
+        pflag = #{record.pflag,jdbcType=INTEGER},
+      </if>
+      <if test="record.userid != null" >
+        userid = #{record.userid,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -225,7 +245,9 @@
       ptitle = #{record.ptitle,jdbcType=VARCHAR},
       pphone = #{record.pphone,jdbcType=VARCHAR},
       pchoice = #{record.pchoice,jdbcType=VARCHAR},
-      pcode = #{record.pcode,jdbcType=VARCHAR}
+      pcode = #{record.pcode,jdbcType=VARCHAR},
+      pflag = #{record.pflag,jdbcType=INTEGER},
+      userid = #{record.userid,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -257,6 +279,12 @@
       <if test="pcode != null" >
         pcode = #{pcode,jdbcType=VARCHAR},
       </if>
+      <if test="pflag != null" >
+        pflag = #{pflag,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null" >
+        userid = #{userid,jdbcType=VARCHAR},
+      </if>
     </set>
     where pnum = #{pnum,jdbcType=INTEGER}
   </update>
@@ -269,7 +297,9 @@
       ptitle = #{ptitle,jdbcType=VARCHAR},
       pphone = #{pphone,jdbcType=VARCHAR},
       pchoice = #{pchoice,jdbcType=VARCHAR},
-      pcode = #{pcode,jdbcType=VARCHAR}
+      pcode = #{pcode,jdbcType=VARCHAR},
+      pflag = #{pflag,jdbcType=INTEGER},
+      userid = #{userid,jdbcType=VARCHAR}
     where pnum = #{pnum,jdbcType=INTEGER}
   </update>
 </mapper>

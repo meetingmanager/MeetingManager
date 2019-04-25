@@ -1,15 +1,21 @@
 package com.meeting.pojo;
 
+import java.util.Date;
+
+import com.alibaba.fastjson.annotation.JSONField;
+
 public class Hoteltype {
     private Integer htnum;
 
     private Long mnum;
 
-    private String httime;
+    private String hotelplace;
 
-    private String etplace;
-
-    private String ettype;
+    private String hoteltype;
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+    private Date starttime;
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+    private Date endtime;
 
     public Integer getHtnum() {
         return htnum;
@@ -27,27 +33,35 @@ public class Hoteltype {
         this.mnum = mnum;
     }
 
-    public String getHttime() {
-        return httime;
+    public String getHotelplace() {
+        return hotelplace;
     }
 
-    public void setHttime(String httime) {
-        this.httime = httime == null ? null : httime.trim();
+    public void setHotelplace(String hotelplace) {
+        this.hotelplace = hotelplace == null ? null : hotelplace.trim();
     }
 
-    public String getEtplace() {
-        return etplace;
+    public String getHoteltype() {
+        return hoteltype;
     }
 
-    public void setEtplace(String etplace) {
-        this.etplace = etplace == null ? null : etplace.trim();
+    public void setHoteltype(String hoteltype) {
+        this.hoteltype = hoteltype == null ? null : hoteltype.trim();
     }
 
-    public String getEttype() {
-        return ettype;
+    public Date getStarttime() {
+        return starttime;
     }
 
-    public void setEttype(String ettype) {
-        this.ettype = ettype == null ? null : ettype.trim();
+    public void setStarttime(Date starttime) {
+        this.starttime = starttime;
+    }
+
+    public Date getEndtime() {
+        return endtime;
+    }
+
+    public void setEndtime(Date endtime) {
+        this.endtime = endtime;
     }
 }

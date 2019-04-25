@@ -16,5 +16,8 @@ public interface UserService {
 	//根据phone查询用户记录
 	public User findUserByPhone(String phone);
 
-
+	//修改用户信息
+	public void updateUser(User user);
+	
+	
 }

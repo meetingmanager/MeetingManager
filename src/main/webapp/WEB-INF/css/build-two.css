@@ -1,0 +1,101 @@
+html, body, div, ul, li, h1, h2, h3, h4, h5, h6, p, dl, dt, dd, ol, form, input, textarea, th, td, select {
+    		margin: 0;
+   		 	padding: 0;
+		}
+		.header{
+			height: 50px;
+			margin: 0 auto;
+			width: 980px;
+		}
+		.header .title a{
+			font-size: 18px;
+			color: #868686;
+			float: left;
+			font-weight: bold;
+			line-height: 50px;
+			text-decoration: none;
+		}
+		.header .self{
+			float: right;
+			font-size: 14px;
+			line-height: 50px;
+			color: #333;
+		}
+		.header .self a{
+			color: #333;
+			text-decoration: none;
+		}
+		.header .self a:hover{
+			color: #00BBDD;
+		}
+		.cl{
+			border: 1px solid #E1E1E1;
+		}
+		.box{
+			background-color: #F4F4F4;
+			color: #333;
+		}
+		.box .content{
+			margin: 0 auto;
+			width: 980px;
+		}.box .content p{
+			height: 40px;
+			line-height: 40px;
+			font-size: 12px;
+		}
+		.box .content p a{
+			color: #333;
+			text-decoration: none;
+		}
+		.box .content p a:hover{
+			text-decoration: underline;
+		}
+		.box .content .content-main{
+			background-color: white;
+			padding-top: 60px;
+			height: 980px;
+		}
+		.box .content .content-main form{
+			width: 600px;
+			margin: 0 auto;
+			text-align: center;
+		}
+		.box .content .content-main form span{
+			color: #777;
+		}
+		.box .content .content-main form #anniu{
+			width: 60px;
+			height: 20px;
+			color: #777;
+			/*display: inline-block;*/
+		}
+		.box .content .content-main #two{														
+			text-align: center;
+			list-style: none;
+		}
+		.box .content .content-main form div input{
+			width: 400px;
+			height: 30px;
+			border: 1px solid #ccc;
+			margin-bottom: 10px;
+		}
+		.box .content .content-main .right-btn{
+			border: 1px solid #0bd;
+			width: 90px;
+			height: 30px;
+			color: #0bd;
+			background-color: white;
+			border-radius:3px;
+			margin-left: 5px;
+			cursor: pointer;
+		}
+		.box .content .content-main .left-btn{
+			border: 1px solid #666;
+			width: 90px;
+			height: 30px;
+			color: #666;
+			background-color: white;
+			border-radius:3px;
+			margin-right: 5px;
+			cursor: pointer;
+		}

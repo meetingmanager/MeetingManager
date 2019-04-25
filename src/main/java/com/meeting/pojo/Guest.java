@@ -13,7 +13,9 @@ public class Guest {
 
     private String gintroduction;
 
-    private Integer gstate;
+    private String gstate;
+
+    private String greason;
 
     public Integer getGnum() {
         return gnum;
@@ -63,11 +65,26 @@ public class Guest {
         this.gintroduction = gintroduction == null ? null : gintroduction.trim();
     }
 
-    public Integer getGstate() {
+    public String getGstate() {
         return gstate;
     }
 
-    public void setGstate(Integer gstate) {
-        this.gstate = gstate;
+    public void setGstate(String gstate) {
+        this.gstate = gstate == null ? null : gstate.trim();
     }
+
+    public String getGreason() {
+        return greason;
+    }
+
+    public void setGreason(String greason) {
+        this.greason = greason == null ? null : greason.trim();
+    }
+
+	@Override
+	public String toString() {
+		return "Guest [gnum=" + gnum + ", mnum=" + mnum + ", gname=" + gname + ", gphone=" + gphone + ", gtitle="
+				+ gtitle + ", gintroduction=" + gintroduction + ", gstate=" + gstate + ", greason=" + greason + "]";
+	}
+    
 }

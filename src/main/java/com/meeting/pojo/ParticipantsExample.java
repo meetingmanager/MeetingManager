@@ -713,6 +713,136 @@ public class ParticipantsExample {
             addCriterion("pcode not between", value1, value2, "pcode");
             return (Criteria) this;
         }
+
+        public Criteria andPflagIsNull() {
+            addCriterion("pflag is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPflagIsNotNull() {
+            addCriterion("pflag is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andPflagEqualTo(Integer value) {
+            addCriterion("pflag =", value, "pflag");
+            return (Criteria) this;
+        }
+
+        public Criteria andPflagNotEqualTo(Integer value) {
+            addCriterion("pflag <>", value, "pflag");
+            return (Criteria) this;
+        }
+
+        public Criteria andPflagGreaterThan(Integer value) {
+            addCriterion("pflag >", value, "pflag");
+            return (Criteria) this;
+        }
+
+        public Criteria andPflagGreaterThanOrEqualTo(Integer value) {
+            addCriterion("pflag >=", value, "pflag");
+            return (Criteria) this;
+        }
+
+        public Criteria andPflagLessThan(Integer value) {
+            addCriterion("pflag <", value, "pflag");
+            return (Criteria) this;
+        }
+
+        public Criteria andPflagLessThanOrEqualTo(Integer value) {
+            addCriterion("pflag <=", value, "pflag");
+            return (Criteria) this;
+        }
+
+        public Criteria andPflagIn(List<Integer> values) {
+            addCriterion("pflag in", values, "pflag");
+            return (Criteria) this;
+        }
+
+        public Criteria andPflagNotIn(List<Integer> values) {
+            addCriterion("pflag not in", values, "pflag");
+            return (Criteria) this;
+        }
+
+        public Criteria andPflagBetween(Integer value1, Integer value2) {
+            addCriterion("pflag between", value1, value2, "pflag");
+            return (Criteria) this;
+        }
+
+        public Criteria andPflagNotBetween(Integer value1, Integer value2) {
+            addCriterion("pflag not between", value1, value2, "pflag");
+            return (Criteria) this;
+        }
+
+        public Criteria andUseridIsNull() {
+            addCriterion("userid is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUseridIsNotNull() {
+            addCriterion("userid is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andUseridEqualTo(String value) {
+            addCriterion("userid =", value, "userid");
+            return (Criteria) this;
+        }
+
+        public Criteria andUseridNotEqualTo(String value) {
+            addCriterion("userid <>", value, "userid");
+            return (Criteria) this;
+        }
+
+        public Criteria andUseridGreaterThan(String value) {
+            addCriterion("userid >", value, "userid");
+            return (Criteria) this;
+        }
+
+        public Criteria andUseridGreaterThanOrEqualTo(String value) {
+            addCriterion("userid >=", value, "userid");
+            return (Criteria) this;
+        }
+
+        public Criteria andUseridLessThan(String value) {
+            addCriterion("userid <", value, "userid");
+            return (Criteria) this;
+        }
+
+        public Criteria andUseridLessThanOrEqualTo(String value) {
+            addCriterion("userid <=", value, "userid");
+            return (Criteria) this;
+        }
+
+        public Criteria andUseridLike(String value) {
+            addCriterion("userid like", value, "userid");
+            return (Criteria) this;
+        }
+
+        public Criteria andUseridNotLike(String value) {
+            addCriterion("userid not like", value, "userid");
+            return (Criteria) this;
+        }
+
+        public Criteria andUseridIn(List<String> values) {
+            addCriterion("userid in", values, "userid");
+            return (Criteria) this;
+        }
+
+        public Criteria andUseridNotIn(List<String> values) {
+            addCriterion("userid not in", values, "userid");
+            return (Criteria) this;
+        }
+
+        public Criteria andUseridBetween(String value1, String value2) {
+            addCriterion("userid between", value1, value2, "userid");
+            return (Criteria) this;
+        }
+
+        public Criteria andUseridNotBetween(String value1, String value2) {
+            addCriterion("userid not between", value1, value2, "userid");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

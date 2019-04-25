@@ -19,6 +19,10 @@ public class Participants {
 
     private String pcode;
 
+    private Integer pflag;
+
+    private String userid;
+
     public Integer getPnum() {
         return pnum;
     }
@@ -89,5 +93,21 @@ public class Participants {
 
     public void setPcode(String pcode) {
         this.pcode = pcode == null ? null : pcode.trim();
+    }
+
+    public Integer getPflag() {
+        return pflag;
+    }
+
+    public void setPflag(Integer pflag) {
+        this.pflag = pflag;
+    }
+
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid == null ? null : userid.trim();
     }
 }

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.meeting.mapper.EatHotelMapper" >
+	<resultMap type="com.meeting.pojo.ExpandedEat" id="EatBaseResultMap">
+		<result column="pnum" jdbcType="INTEGER" property="pnum" />
+	    <result column="pname" jdbcType="VARCHAR" property="pname" />
+	    <result column="userid" jdbcType="VARCHAR" property="userid" />
+	</resultMap>
+	
+	<resultMap type="com.meeting.pojo.ExpandedHotel" id="HotelBaseResultMap">
+		<result column="pnum" jdbcType="INTEGER" property="pnum" />
+	    <result column="pname" jdbcType="VARCHAR" property="pname" />
+	    <result column="userid" jdbcType="VARCHAR" property="userid" />
+	</resultMap>
+	
+	<resultMap type="com.meeting.pojo.UserEat"  id="UserAndEat">
+		<result column="phone" jdbcType="VARCHAR" property="phone" />
+	    <result column="pname" jdbcType="VARCHAR" property="pname" />
+	    <result column="usersex" jdbcType="VARCHAR" property="usersex" />
+	    <result column="eatnum" jdbcType="INTEGER" property="eatnum" />
+	</resultMap>
+	
+	<resultMap type="com.meeting.pojo.UserHotel"  id="UserAndHotel">
+		<result column="phone" jdbcType="VARCHAR" property="phone" />
+	    <result column="pname" jdbcType="VARCHAR" property="pname" />
+	    <result column="usersex" jdbcType="VARCHAR" property="usersex" />
+	    <result column="hnum" jdbcType="INTEGER" property="hnum" />
+	</resultMap>
+	<sql id="ExpandedEat">
+		pnum,pname,userid
+	</sql>
+	
+	<sql id="Eattype_Base_Column_List" >
+    etnum, mnum, ettimestart, ettimeend, etplace, ettype
+  </sql>
+	<sql id="Hoteltype_Base_Column_List">
+		htnum,mnum,hotelplace,hoteltype,starttime,endtime
+	</sql>
+	<sql id="User_Eat_Info">
+		username,phone,usersex,eatnum
+	</sql>
+	
+	<sql id="User_Hotel_Info">
+		username,phone,usersex,hnum
+	</sql>
+	
+	<select id="selectSeatParticipants" resultMap="EatBaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="ExpandedEat" />
+		from participants
+		<where>
+			 pnum not in(SELECT pnum FROM eat WHERE mnum = #{mnum,jdbcType=BIGINT} and etnum = #{etnum,jdbcType=BIGINT}) 
+			 and mnum = #{mnum,jdbcType=BIGINT} 
+			 and pflag= #{pflag,jdbcType=BIGINT}
+		</where>
+	</select>
+	
+	<select id="selectEatTypeByUserid" resultType="com.meeting.pojo.Eattype" parameterType="java.util.Map">
+		select
+		<include refid="Eattype_Base_Column_List" />
+		FROM eattype
+		<where>
+			etnum in (SELECT etnum FROM eat WHERE mnum = #{mnum,jdbcType=BIGINT} and pnum=#{pnum,jdbcType=BIGINT})
+		</where>
+	</select>
+	
+	
+	<select id="selectUserByMnumEtnum" resultMap="UserAndEat" parameterType="java.util.Map">
+		select
+		<include refid="User_Eat_Info" />
+		FROM `user`,participants,eat
+		<where>
+			 `user`.userid = participants.userid and eat.pnum = participants.pnum and eat.mnum = #{mnum,jdbcType=BIGINT} and eat.etnum = #{etnum,jdbcType=BIGINT}
+		</where>
+	</select>
+	
+	<select id="selectHotelParticipants" resultMap="HotelBaseResultMap" parameterType="java.util.Map">
+		select
+		<include refid="ExpandedEat" />
+		from participants
+		<where>
+			 pnum not in(SELECT pnum FROM hotel WHERE mnum = #{mnum,jdbcType=BIGINT} and htnum = #{htnum,jdbcType=BIGINT}) 
+			 and mnum = #{mnum,jdbcType=BIGINT} 
+			 and pflag= #{pflag,jdbcType=BIGINT}
+		</where>
+	</select>
+	
+	<select id="selectUserByMnumHtnum" resultMap="UserAndHotel" parameterType="java.util.Map">
+		select
+		<include refid="User_Hotel_Info" />
+		FROM `user`,participants,hotel 
+		<where>
+			hotel.pnum = participants.pnum and participants.userid = `user`.userid and hotel.mnum = #{mnum,jdbcType=BIGINT} and hotel.htnum = #{htnum,jdbcType=BIGINT}
+		</where>
+	</select>
+	
+	<select id="selectHotelTypeByUserid" resultType="com.meeting.pojo.Hoteltype" parameterType="java.util.Map">
+		select
+		<include refid="Hoteltype_Base_Column_List" />
+		FROM hoteltype
+		<where>
+			htnum in (SELECT htnum FROM hotel WHERE #{mnum,jdbcType=BIGINT} and pnum=#{pnum,jdbcType=BIGINT} )
+		</where>
+	</select>
+</mapper>

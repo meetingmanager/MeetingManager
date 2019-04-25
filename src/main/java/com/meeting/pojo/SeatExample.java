@@ -224,66 +224,6 @@ public class SeatExample {
             return (Criteria) this;
         }
 
-        public Criteria andSnumIsNull() {
-            addCriterion("snum is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andSnumIsNotNull() {
-            addCriterion("snum is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andSnumEqualTo(Integer value) {
-            addCriterion("snum =", value, "snum");
-            return (Criteria) this;
-        }
-
-        public Criteria andSnumNotEqualTo(Integer value) {
-            addCriterion("snum <>", value, "snum");
-            return (Criteria) this;
-        }
-
-        public Criteria andSnumGreaterThan(Integer value) {
-            addCriterion("snum >", value, "snum");
-            return (Criteria) this;
-        }
-
-        public Criteria andSnumGreaterThanOrEqualTo(Integer value) {
-            addCriterion("snum >=", value, "snum");
-            return (Criteria) this;
-        }
-
-        public Criteria andSnumLessThan(Integer value) {
-            addCriterion("snum <", value, "snum");
-            return (Criteria) this;
-        }
-
-        public Criteria andSnumLessThanOrEqualTo(Integer value) {
-            addCriterion("snum <=", value, "snum");
-            return (Criteria) this;
-        }
-
-        public Criteria andSnumIn(List<Integer> values) {
-            addCriterion("snum in", values, "snum");
-            return (Criteria) this;
-        }
-
-        public Criteria andSnumNotIn(List<Integer> values) {
-            addCriterion("snum not in", values, "snum");
-            return (Criteria) this;
-        }
-
-        public Criteria andSnumBetween(Integer value1, Integer value2) {
-            addCriterion("snum between", value1, value2, "snum");
-            return (Criteria) this;
-        }
-
-        public Criteria andSnumNotBetween(Integer value1, Integer value2) {
-            addCriterion("snum not between", value1, value2, "snum");
-            return (Criteria) this;
-        }
-
         public Criteria andPnumIsNull() {
             addCriterion("pnum is null");
             return (Criteria) this;
@@ -341,6 +281,66 @@ public class SeatExample {
 
         public Criteria andPnumNotBetween(Integer value1, Integer value2) {
             addCriterion("pnum not between", value1, value2, "pnum");
+            return (Criteria) this;
+        }
+
+        public Criteria andSeatnumIsNull() {
+            addCriterion("seatnum is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSeatnumIsNotNull() {
+            addCriterion("seatnum is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andSeatnumEqualTo(Integer value) {
+            addCriterion("seatnum =", value, "seatnum");
+            return (Criteria) this;
+        }
+
+        public Criteria andSeatnumNotEqualTo(Integer value) {
+            addCriterion("seatnum <>", value, "seatnum");
+            return (Criteria) this;
+        }
+
+        public Criteria andSeatnumGreaterThan(Integer value) {
+            addCriterion("seatnum >", value, "seatnum");
+            return (Criteria) this;
+        }
+
+        public Criteria andSeatnumGreaterThanOrEqualTo(Integer value) {
+            addCriterion("seatnum >=", value, "seatnum");
+            return (Criteria) this;
+        }
+
+        public Criteria andSeatnumLessThan(Integer value) {
+            addCriterion("seatnum <", value, "seatnum");
+            return (Criteria) this;
+        }
+
+        public Criteria andSeatnumLessThanOrEqualTo(Integer value) {
+            addCriterion("seatnum <=", value, "seatnum");
+            return (Criteria) this;
+        }
+
+        public Criteria andSeatnumIn(List<Integer> values) {
+            addCriterion("seatnum in", values, "seatnum");
+            return (Criteria) this;
+        }
+
+        public Criteria andSeatnumNotIn(List<Integer> values) {
+            addCriterion("seatnum not in", values, "seatnum");
+            return (Criteria) this;
+        }
+
+        public Criteria andSeatnumBetween(Integer value1, Integer value2) {
+            addCriterion("seatnum between", value1, value2, "seatnum");
+            return (Criteria) this;
+        }
+
+        public Criteria andSeatnumNotBetween(Integer value1, Integer value2) {
+            addCriterion("seatnum not between", value1, value2, "seatnum");
             return (Criteria) this;
         }
     }

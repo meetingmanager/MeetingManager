@@ -1,0 +1,106 @@
+html, body, div, ul, li, h1, h2, h3, h4, h5, h6, p, dl, dt, dd, ol, form, input, textarea, th, td, select {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #f4f4f4;
+}
+
+.wall {
+    height: 40px;
+}
+
+form {
+    width: 60%;
+    background-color: white;
+    margin: auto;
+}
+
+form .header {
+    width: 90%;
+    margin: auto;
+    border-bottom: 1px solid #e1e1e1;
+    padding-top: 14px;
+    padding-bottom: 14px;
+}
+
+.fang {
+    height: 9px;
+    width: 9px;
+    display: inline-block;
+    background-color: #0bd;
+    margin-right: 16px;
+}
+
+form .body {
+    padding-top: 0px;
+    width: 86%;
+    margin: auto;
+    font-size: 12px;
+}
+
+form .body .body-left {
+    float: left;
+    width: 50%;
+    border-right: 1px solid #e1e1e1;
+}
+
+form .body .body-right {
+    float: left;
+    width: 45.5%;
+    padding-left: 4.3%;
+}
+
+.cl {
+    clear: both;
+}
+
+form .body .body-left div, .body .body-right div {
+    height: 28px;
+    line-height: 28px;
+    padding-top: 2px;
+}
+
+form .body .body-left input, .body .body-right input {
+    height: 30px;
+    border: 1px solid #e1e1e1;
+    padding-left: 9px;
+    width: 90%;
+}
+
+select {
+    height: 30px;
+    width: 110px;
+}
+
+form .tail {
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+form .tail .save {
+    height: 30px;
+    width: 94px;
+    padding-left: 22px;
+    padding-right: 22px;
+    font-size: 12px;
+    color: #ddd;
+    border: 1px solid #ddd;
+    background-color: white;
+    cursor: pointer;
+    margin-right: 20px;
+}
+
+form .tail .close {
+    height: 30px;
+    width: 94px;
+    padding-left: 22px;
+    padding-right: 22px;
+    font-size: 12px;
+    color: #666;
+    border: 1px solid #666;
+    background-color: white;
+    cursor: pointer;
+}

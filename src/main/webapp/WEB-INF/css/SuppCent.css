@@ -1,0 +1,166 @@
+
+html, body, div, ul, li, h1, h2, h3, h4, h5, h6, p, dl, dt, dd, ol, form, input, textarea, th, td, select {
+    margin: 0;
+    padding: 0;
+}
+
+.table {
+    background-color: white;
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.table .header {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid skyblue;
+    border-top: 1px solid skyblue;
+}
+
+.table .header div {
+    float: left;
+    border-right: 1px solid skyblue;
+    height: 50px;
+    padding: 5px 10px 5px 10px;
+    width: 6.25%;
+    font-weight: bold;
+}
+
+.cl {
+    clear: both;
+}
+
+.table .body {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid skyblue;
+    display: table;
+}
+
+.table .body div {
+    border-right: 1px solid skyblue;
+    padding: 5px 10px 5px 10px;
+    width: 6.25%;
+    word-wrap: break-word;
+    height: 100%;
+    display: table-cell;
+    word-break: break-all;
+}
+
+#loginName {
+    position: relative;
+}
+
+.change-code {
+    width: 35%;
+    height: 350px;
+    position: absolute;
+    top: 200px;
+    right: 32.5%;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: #fff;
+    display: none;
+}
+
+.change-code .close {
+    float: right;
+    padding-right: 10px;
+    padding-top: 10px;
+}
+
+.change-code .close {
+    color: #3d3d3d;
+    cursor: pointer;
+}
+
+.change-code .close:hover {
+    color: #CA0C16;
+}
+
+.change-code .change-code-major {
+    float: left;
+    width: 100%
+}
+
+.change-code .change-code-major div {
+    width: 90%;
+    padding: 10px 0 5px 10%;
+}
+
+.change-code .change-code-major div p {
+    padding-bottom: 5px;
+}
+
+.change-code .change-code-major div input {
+    width: 85%;
+    height: 30px;
+    padding-left: 5px;
+    font-size: 14px;
+}
+
+.right { /*正确的*/
+    color: #5EFF5E;
+    background: url(/img/right.png) no-repeat 4px 3px;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.wrong { /*错误的*/
+    background: url(/img/wrong.png) no-repeat 4px 3px;
+    color: #FF6B39;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.change-code .change-code-major div span {
+    height: 39px;
+    width: 20px;
+    float: right;
+    padding-right: 6%;
+}
+
+.anniu {
+    float: left;
+    padding-left: 25%;
+    padding-top: 20px;
+    width: 100%;
+}
+
+#anniu {
+    width: 50%; /* 宽度 */
+    height: 40px; /* 高度 */
+    border-width: 0px; /* 边框宽度 */
+    border-radius: 3px; /* 边框半径 */
+    background: #1E90FF; /* 背景颜色 */
+    outline: none; /* 不显示轮廓线 */
+    font-family: Microsoft YaHei; /* 设置字体 */
+    color: white; /* 字体颜色 */
+    font-size: 17px; /* 字体大小 */
+}
+
+.xiaoshou {
+    cursor: pointer;
+}
+
+.txt {
+    height: 30px;
+    border: 1px solid #cdcdcd;
+}
+
+.file {
+    position: absolute;
+    top: 26px;
+    right: 60px;
+    height: 30px;
+    filter: alpha(opacity:0);
+    opacity: 0;
+    width: 240px;
+    background-color: black;
+    cursor: pointer;
+}
+
+.navbar-header .upload {
+    width: 310px;
+    float: left;
+    padding-top: 14px;
+}

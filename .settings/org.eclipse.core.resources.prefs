@@ -1,2 +1,8 @@
 eclipse.preferences.version=1
-encoding//src/main/webapp/html/homepage.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/css/table.css=UTF-8
+encoding//src/main/webapp/WEB-INF/html=GBK
+encoding//src/main/webapp/WEB-INF/html/build-one.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/html/eat.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/html/homepage.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/html/joinMeeting.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/html/view.jsp=UTF-8

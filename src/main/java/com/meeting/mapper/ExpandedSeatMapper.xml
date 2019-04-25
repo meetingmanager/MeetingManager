@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.meeting.mapper.ExpandedSeatMapper" >
+	<resultMap type="com.meeting.pojo.ExpandedSeat" id="BaseResultMap">
+		<result column="pnum1" jdbcType="INTEGER" property="pnum" />
+    	<result column="pname1" jdbcType="VARCHAR" property="pname" />
+	</resultMap>
+	
+	<sql id="ExpandedSelect">
+		participants.pnum as pnum1,participants.pname as pname1
+	</sql>
+	<select id="selectSeatParticipants" resultMap="BaseResultMap" parameterType="java.lang.Long">
+		select
+		<include refid="ExpandedSelect" />
+		from participants
+		<where>
+			 participants.pnum not in (SELECT pnum from  seat)  and participants.mnum=#{mnum,jdbcType=BIGINT}
+		</where>
+	</select>
+</mapper>

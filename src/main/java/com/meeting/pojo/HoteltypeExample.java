@@ -1,6 +1,8 @@
 package com.meeting.pojo;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 public class HoteltypeExample {
@@ -102,6 +104,32 @@ public class HoteltypeExample {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
             criteria.add(new Criterion(condition, value1, value2));
+        }
+
+        protected void addCriterionForJDBCDate(String condition, Date value, String property) {
+            if (value == null) {
+                throw new RuntimeException("Value for " + property + " cannot be null");
+            }
+            addCriterion(condition, new java.sql.Date(value.getTime()), property);
+        }
+
+        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
+            if (values == null || values.size() == 0) {
+                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
+            }
+            List<java.sql.Date> dateList = new ArrayList<java.sql.Date>();
+            Iterator<Date> iter = values.iterator();
+            while (iter.hasNext()) {
+                dateList.add(new java.sql.Date(iter.next().getTime()));
+            }
+            addCriterion(condition, dateList, property);
+        }
+
+        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
+            if (value1 == null || value2 == null) {
+                throw new RuntimeException("Between values for " + property + " cannot be null");
+            }
+            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
         }
 
         public Criteria andHtnumIsNull() {
@@ -224,213 +252,263 @@ public class HoteltypeExample {
             return (Criteria) this;
         }
 
-        public Criteria andHttimeIsNull() {
-            addCriterion("httime is null");
+        public Criteria andHotelplaceIsNull() {
+            addCriterion("hotelplace is null");
             return (Criteria) this;
         }
 
-        public Criteria andHttimeIsNotNull() {
-            addCriterion("httime is not null");
+        public Criteria andHotelplaceIsNotNull() {
+            addCriterion("hotelplace is not null");
             return (Criteria) this;
         }
 
-        public Criteria andHttimeEqualTo(String value) {
-            addCriterion("httime =", value, "httime");
+        public Criteria andHotelplaceEqualTo(String value) {
+            addCriterion("hotelplace =", value, "hotelplace");
             return (Criteria) this;
         }
 
-        public Criteria andHttimeNotEqualTo(String value) {
-            addCriterion("httime <>", value, "httime");
+        public Criteria andHotelplaceNotEqualTo(String value) {
+            addCriterion("hotelplace <>", value, "hotelplace");
             return (Criteria) this;
         }
 
-        public Criteria andHttimeGreaterThan(String value) {
-            addCriterion("httime >", value, "httime");
+        public Criteria andHotelplaceGreaterThan(String value) {
+            addCriterion("hotelplace >", value, "hotelplace");
             return (Criteria) this;
         }
 
-        public Criteria andHttimeGreaterThanOrEqualTo(String value) {
-            addCriterion("httime >=", value, "httime");
+        public Criteria andHotelplaceGreaterThanOrEqualTo(String value) {
+            addCriterion("hotelplace >=", value, "hotelplace");
             return (Criteria) this;
         }
 
-        public Criteria andHttimeLessThan(String value) {
-            addCriterion("httime <", value, "httime");
+        public Criteria andHotelplaceLessThan(String value) {
+            addCriterion("hotelplace <", value, "hotelplace");
             return (Criteria) this;
         }
 
-        public Criteria andHttimeLessThanOrEqualTo(String value) {
-            addCriterion("httime <=", value, "httime");
+        public Criteria andHotelplaceLessThanOrEqualTo(String value) {
+            addCriterion("hotelplace <=", value, "hotelplace");
             return (Criteria) this;
         }
 
-        public Criteria andHttimeLike(String value) {
-            addCriterion("httime like", value, "httime");
+        public Criteria andHotelplaceLike(String value) {
+            addCriterion("hotelplace like", value, "hotelplace");
             return (Criteria) this;
         }
 
-        public Criteria andHttimeNotLike(String value) {
-            addCriterion("httime not like", value, "httime");
+        public Criteria andHotelplaceNotLike(String value) {
+            addCriterion("hotelplace not like", value, "hotelplace");
             return (Criteria) this;
         }
 
-        public Criteria andHttimeIn(List<String> values) {
-            addCriterion("httime in", values, "httime");
+        public Criteria andHotelplaceIn(List<String> values) {
+            addCriterion("hotelplace in", values, "hotelplace");
             return (Criteria) this;
         }
 
-        public Criteria andHttimeNotIn(List<String> values) {
-            addCriterion("httime not in", values, "httime");
+        public Criteria andHotelplaceNotIn(List<String> values) {
+            addCriterion("hotelplace not in", values, "hotelplace");
             return (Criteria) this;
         }
 
-        public Criteria andHttimeBetween(String value1, String value2) {
-            addCriterion("httime between", value1, value2, "httime");
+        public Criteria andHotelplaceBetween(String value1, String value2) {
+            addCriterion("hotelplace between", value1, value2, "hotelplace");
             return (Criteria) this;
         }
 
-        public Criteria andHttimeNotBetween(String value1, String value2) {
-            addCriterion("httime not between", value1, value2, "httime");
+        public Criteria andHotelplaceNotBetween(String value1, String value2) {
+            addCriterion("hotelplace not between", value1, value2, "hotelplace");
             return (Criteria) this;
         }
 
-        public Criteria andEtplaceIsNull() {
-            addCriterion("etplace is null");
+        public Criteria andHoteltypeIsNull() {
+            addCriterion("hoteltype is null");
             return (Criteria) this;
         }
 
-        public Criteria andEtplaceIsNotNull() {
-            addCriterion("etplace is not null");
+        public Criteria andHoteltypeIsNotNull() {
+            addCriterion("hoteltype is not null");
             return (Criteria) this;
         }
 
-        public Criteria andEtplaceEqualTo(String value) {
-            addCriterion("etplace =", value, "etplace");
+        public Criteria andHoteltypeEqualTo(String value) {
+            addCriterion("hoteltype =", value, "hoteltype");
             return (Criteria) this;
         }
 
-        public Criteria andEtplaceNotEqualTo(String value) {
-            addCriterion("etplace <>", value, "etplace");
+        public Criteria andHoteltypeNotEqualTo(String value) {
+            addCriterion("hoteltype <>", value, "hoteltype");
             return (Criteria) this;
         }
 
-        public Criteria andEtplaceGreaterThan(String value) {
-            addCriterion("etplace >", value, "etplace");
+        public Criteria andHoteltypeGreaterThan(String value) {
+            addCriterion("hoteltype >", value, "hoteltype");
             return (Criteria) this;
         }
 
-        public Criteria andEtplaceGreaterThanOrEqualTo(String value) {
-            addCriterion("etplace >=", value, "etplace");
+        public Criteria andHoteltypeGreaterThanOrEqualTo(String value) {
+            addCriterion("hoteltype >=", value, "hoteltype");
             return (Criteria) this;
         }
 
-        public Criteria andEtplaceLessThan(String value) {
-            addCriterion("etplace <", value, "etplace");
+        public Criteria andHoteltypeLessThan(String value) {
+            addCriterion("hoteltype <", value, "hoteltype");
             return (Criteria) this;
         }
 
-        public Criteria andEtplaceLessThanOrEqualTo(String value) {
-            addCriterion("etplace <=", value, "etplace");
+        public Criteria andHoteltypeLessThanOrEqualTo(String value) {
+            addCriterion("hoteltype <=", value, "hoteltype");
             return (Criteria) this;
         }
 
-        public Criteria andEtplaceLike(String value) {
-            addCriterion("etplace like", value, "etplace");
+        public Criteria andHoteltypeLike(String value) {
+            addCriterion("hoteltype like", value, "hoteltype");
             return (Criteria) this;
         }
 
-        public Criteria andEtplaceNotLike(String value) {
-            addCriterion("etplace not like", value, "etplace");
+        public Criteria andHoteltypeNotLike(String value) {
+            addCriterion("hoteltype not like", value, "hoteltype");
             return (Criteria) this;
         }
 
-        public Criteria andEtplaceIn(List<String> values) {
-            addCriterion("etplace in", values, "etplace");
+        public Criteria andHoteltypeIn(List<String> values) {
+            addCriterion("hoteltype in", values, "hoteltype");
             return (Criteria) this;
         }
 
-        public Criteria andEtplaceNotIn(List<String> values) {
-            addCriterion("etplace not in", values, "etplace");
+        public Criteria andHoteltypeNotIn(List<String> values) {
+            addCriterion("hoteltype not in", values, "hoteltype");
             return (Criteria) this;
         }
 
-        public Criteria andEtplaceBetween(String value1, String value2) {
-            addCriterion("etplace between", value1, value2, "etplace");
+        public Criteria andHoteltypeBetween(String value1, String value2) {
+            addCriterion("hoteltype between", value1, value2, "hoteltype");
             return (Criteria) this;
         }
 
-        public Criteria andEtplaceNotBetween(String value1, String value2) {
-            addCriterion("etplace not between", value1, value2, "etplace");
+        public Criteria andHoteltypeNotBetween(String value1, String value2) {
+            addCriterion("hoteltype not between", value1, value2, "hoteltype");
             return (Criteria) this;
         }
 
-        public Criteria andEttypeIsNull() {
-            addCriterion("ettype is null");
+        public Criteria andStarttimeIsNull() {
+            addCriterion("starttime is null");
             return (Criteria) this;
         }
 
-        public Criteria andEttypeIsNotNull() {
-            addCriterion("ettype is not null");
+        public Criteria andStarttimeIsNotNull() {
+            addCriterion("starttime is not null");
             return (Criteria) this;
         }
 
-        public Criteria andEttypeEqualTo(String value) {
-            addCriterion("ettype =", value, "ettype");
+        public Criteria andStarttimeEqualTo(Date value) {
+            addCriterionForJDBCDate("starttime =", value, "starttime");
             return (Criteria) this;
         }
 
-        public Criteria andEttypeNotEqualTo(String value) {
-            addCriterion("ettype <>", value, "ettype");
+        public Criteria andStarttimeNotEqualTo(Date value) {
+            addCriterionForJDBCDate("starttime <>", value, "starttime");
             return (Criteria) this;
         }
 
-        public Criteria andEttypeGreaterThan(String value) {
-            addCriterion("ettype >", value, "ettype");
+        public Criteria andStarttimeGreaterThan(Date value) {
+            addCriterionForJDBCDate("starttime >", value, "starttime");
             return (Criteria) this;
         }
 
-        public Criteria andEttypeGreaterThanOrEqualTo(String value) {
-            addCriterion("ettype >=", value, "ettype");
+        public Criteria andStarttimeGreaterThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("starttime >=", value, "starttime");
             return (Criteria) this;
         }
 
-        public Criteria andEttypeLessThan(String value) {
-            addCriterion("ettype <", value, "ettype");
+        public Criteria andStarttimeLessThan(Date value) {
+            addCriterionForJDBCDate("starttime <", value, "starttime");
             return (Criteria) this;
         }
 
-        public Criteria andEttypeLessThanOrEqualTo(String value) {
-            addCriterion("ettype <=", value, "ettype");
+        public Criteria andStarttimeLessThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("starttime <=", value, "starttime");
             return (Criteria) this;
         }
 
-        public Criteria andEttypeLike(String value) {
-            addCriterion("ettype like", value, "ettype");
+        public Criteria andStarttimeIn(List<Date> values) {
+            addCriterionForJDBCDate("starttime in", values, "starttime");
             return (Criteria) this;
         }
 
-        public Criteria andEttypeNotLike(String value) {
-            addCriterion("ettype not like", value, "ettype");
+        public Criteria andStarttimeNotIn(List<Date> values) {
+            addCriterionForJDBCDate("starttime not in", values, "starttime");
             return (Criteria) this;
         }
 
-        public Criteria andEttypeIn(List<String> values) {
-            addCriterion("ettype in", values, "ettype");
+        public Criteria andStarttimeBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("starttime between", value1, value2, "starttime");
             return (Criteria) this;
         }
 
-        public Criteria andEttypeNotIn(List<String> values) {
-            addCriterion("ettype not in", values, "ettype");
+        public Criteria andStarttimeNotBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("starttime not between", value1, value2, "starttime");
             return (Criteria) this;
         }
 
-        public Criteria andEttypeBetween(String value1, String value2) {
-            addCriterion("ettype between", value1, value2, "ettype");
+        public Criteria andEndtimeIsNull() {
+            addCriterion("endtime is null");
             return (Criteria) this;
         }
 
-        public Criteria andEttypeNotBetween(String value1, String value2) {
-            addCriterion("ettype not between", value1, value2, "ettype");
+        public Criteria andEndtimeIsNotNull() {
+            addCriterion("endtime is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndtimeEqualTo(Date value) {
+            addCriterionForJDBCDate("endtime =", value, "endtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndtimeNotEqualTo(Date value) {
+            addCriterionForJDBCDate("endtime <>", value, "endtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndtimeGreaterThan(Date value) {
+            addCriterionForJDBCDate("endtime >", value, "endtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndtimeGreaterThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("endtime >=", value, "endtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndtimeLessThan(Date value) {
+            addCriterionForJDBCDate("endtime <", value, "endtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndtimeLessThanOrEqualTo(Date value) {
+            addCriterionForJDBCDate("endtime <=", value, "endtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndtimeIn(List<Date> values) {
+            addCriterionForJDBCDate("endtime in", values, "endtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndtimeNotIn(List<Date> values) {
+            addCriterionForJDBCDate("endtime not in", values, "endtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndtimeBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("endtime between", value1, value2, "endtime");
+            return (Criteria) this;
+        }
+
+        public Criteria andEndtimeNotBetween(Date value1, Date value2) {
+            addCriterionForJDBCDate("endtime not between", value1, value2, "endtime");
             return (Criteria) this;
         }
     }

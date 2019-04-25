@@ -8,7 +8,8 @@
     <result column="gphone" property="gphone" jdbcType="VARCHAR" />
     <result column="gtitle" property="gtitle" jdbcType="VARCHAR" />
     <result column="gintroduction" property="gintroduction" jdbcType="VARCHAR" />
-    <result column="gstate" property="gstate" jdbcType="INTEGER" />
+    <result column="gstate" property="gstate" jdbcType="VARCHAR" />
+    <result column="greason" property="greason" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -69,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    gnum, mnum, gname, gphone, gtitle, gintroduction, gstate
+    gnum, mnum, gname, gphone, gtitle, gintroduction, gstate, greason
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.meeting.pojo.GuestExample" >
     select
@@ -104,10 +105,10 @@
   <insert id="insert" parameterType="com.meeting.pojo.Guest" >
     insert into guest (gnum, mnum, gname, 
       gphone, gtitle, gintroduction, 
-      gstate)
+      gstate, greason)
     values (#{gnum,jdbcType=INTEGER}, #{mnum,jdbcType=BIGINT}, #{gname,jdbcType=VARCHAR}, 
       #{gphone,jdbcType=VARCHAR}, #{gtitle,jdbcType=VARCHAR}, #{gintroduction,jdbcType=VARCHAR}, 
-      #{gstate,jdbcType=INTEGER})
+      #{gstate,jdbcType=VARCHAR}, #{greason,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.meeting.pojo.Guest" >
     insert into guest
@@ -133,6 +134,9 @@
       <if test="gstate != null" >
         gstate,
       </if>
+      <if test="greason != null" >
+        greason,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="gnum != null" >
@@ -154,7 +158,10 @@
         #{gintroduction,jdbcType=VARCHAR},
       </if>
       <if test="gstate != null" >
-        #{gstate,jdbcType=INTEGER},
+        #{gstate,jdbcType=VARCHAR},
+      </if>
+      <if test="greason != null" >
+        #{greason,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -186,7 +193,10 @@
         gintroduction = #{record.gintroduction,jdbcType=VARCHAR},
       </if>
       <if test="record.gstate != null" >
-        gstate = #{record.gstate,jdbcType=INTEGER},
+        gstate = #{record.gstate,jdbcType=VARCHAR},
+      </if>
+      <if test="record.greason != null" >
+        greason = #{record.greason,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -201,7 +211,8 @@
       gphone = #{record.gphone,jdbcType=VARCHAR},
       gtitle = #{record.gtitle,jdbcType=VARCHAR},
       gintroduction = #{record.gintroduction,jdbcType=VARCHAR},
-      gstate = #{record.gstate,jdbcType=INTEGER}
+      gstate = #{record.gstate,jdbcType=VARCHAR},
+      greason = #{record.greason,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -225,7 +236,10 @@
         gintroduction = #{gintroduction,jdbcType=VARCHAR},
       </if>
       <if test="gstate != null" >
-        gstate = #{gstate,jdbcType=INTEGER},
+        gstate = #{gstate,jdbcType=VARCHAR},
+      </if>
+      <if test="greason != null" >
+        greason = #{greason,jdbcType=VARCHAR},
       </if>
     </set>
     where gnum = #{gnum,jdbcType=INTEGER}
@@ -237,7 +251,8 @@
       gphone = #{gphone,jdbcType=VARCHAR},
       gtitle = #{gtitle,jdbcType=VARCHAR},
       gintroduction = #{gintroduction,jdbcType=VARCHAR},
-      gstate = #{gstate,jdbcType=INTEGER}
+      gstate = #{gstate,jdbcType=VARCHAR},
+      greason = #{greason,jdbcType=VARCHAR}
     where gnum = #{gnum,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -1,7 +1,7 @@
 package com.meeting.pojo;
 
 public class Eat {
-    private Integer eeatnum;
+    private Integer eatnum;
 
     private Long mnum;
 
@@ -9,12 +9,12 @@ public class Eat {
 
     private Integer etnum;
 
-    public Integer getEeatnum() {
-        return eeatnum;
+    public Integer getEatnum() {
+        return eatnum;
     }
 
-    public void setEeatnum(Integer eeatnum) {
-        this.eeatnum = eeatnum;
+    public void setEatnum(Integer eatnum) {
+        this.eatnum = eatnum;
     }
 
     public Long getMnum() {

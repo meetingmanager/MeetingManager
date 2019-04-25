@@ -29,6 +29,10 @@ public class Meeting {
 
     private Integer mtype;
 
+    private String userid;
+
+    private String mimage;
+
     public Long getMnum() {
         return mnum;
     }
@@ -131,5 +135,21 @@ public class Meeting {
 
     public void setMtype(Integer mtype) {
         this.mtype = mtype;
+    }
+
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid == null ? null : userid.trim();
+    }
+
+    public String getMimage() {
+        return mimage;
+    }
+
+    public void setMimage(String mimage) {
+        this.mimage = mimage == null ? null : mimage.trim();
     }
 }

@@ -104,63 +104,63 @@ public class EatExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andEeatnumIsNull() {
-            addCriterion("eeatnum is null");
+        public Criteria andEatnumIsNull() {
+            addCriterion("eatnum is null");
             return (Criteria) this;
         }
 
-        public Criteria andEeatnumIsNotNull() {
-            addCriterion("eeatnum is not null");
+        public Criteria andEatnumIsNotNull() {
+            addCriterion("eatnum is not null");
             return (Criteria) this;
         }
 
-        public Criteria andEeatnumEqualTo(Integer value) {
-            addCriterion("eeatnum =", value, "eeatnum");
+        public Criteria andEatnumEqualTo(Integer value) {
+            addCriterion("eatnum =", value, "eatnum");
             return (Criteria) this;
         }
 
-        public Criteria andEeatnumNotEqualTo(Integer value) {
-            addCriterion("eeatnum <>", value, "eeatnum");
+        public Criteria andEatnumNotEqualTo(Integer value) {
+            addCriterion("eatnum <>", value, "eatnum");
             return (Criteria) this;
         }
 
-        public Criteria andEeatnumGreaterThan(Integer value) {
-            addCriterion("eeatnum >", value, "eeatnum");
+        public Criteria andEatnumGreaterThan(Integer value) {
+            addCriterion("eatnum >", value, "eatnum");
             return (Criteria) this;
         }
 
-        public Criteria andEeatnumGreaterThanOrEqualTo(Integer value) {
-            addCriterion("eeatnum >=", value, "eeatnum");
+        public Criteria andEatnumGreaterThanOrEqualTo(Integer value) {
+            addCriterion("eatnum >=", value, "eatnum");
             return (Criteria) this;
         }
 
-        public Criteria andEeatnumLessThan(Integer value) {
-            addCriterion("eeatnum <", value, "eeatnum");
+        public Criteria andEatnumLessThan(Integer value) {
+            addCriterion("eatnum <", value, "eatnum");
             return (Criteria) this;
         }
 
-        public Criteria andEeatnumLessThanOrEqualTo(Integer value) {
-            addCriterion("eeatnum <=", value, "eeatnum");
+        public Criteria andEatnumLessThanOrEqualTo(Integer value) {
+            addCriterion("eatnum <=", value, "eatnum");
             return (Criteria) this;
         }
 
-        public Criteria andEeatnumIn(List<Integer> values) {
-            addCriterion("eeatnum in", values, "eeatnum");
+        public Criteria andEatnumIn(List<Integer> values) {
+            addCriterion("eatnum in", values, "eatnum");
             return (Criteria) this;
         }
 
-        public Criteria andEeatnumNotIn(List<Integer> values) {
-            addCriterion("eeatnum not in", values, "eeatnum");
+        public Criteria andEatnumNotIn(List<Integer> values) {
+            addCriterion("eatnum not in", values, "eatnum");
             return (Criteria) this;
         }
 
-        public Criteria andEeatnumBetween(Integer value1, Integer value2) {
-            addCriterion("eeatnum between", value1, value2, "eeatnum");
+        public Criteria andEatnumBetween(Integer value1, Integer value2) {
+            addCriterion("eatnum between", value1, value2, "eatnum");
             return (Criteria) this;
         }
 
-        public Criteria andEeatnumNotBetween(Integer value1, Integer value2) {
-            addCriterion("eeatnum not between", value1, value2, "eeatnum");
+        public Criteria andEatnumNotBetween(Integer value1, Integer value2) {
+            addCriterion("eatnum not between", value1, value2, "eatnum");
             return (Criteria) this;
         }
 

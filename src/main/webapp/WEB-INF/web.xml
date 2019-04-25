@@ -27,7 +27,7 @@
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
-
+ 
 	<!-- 解决post乱码 -->
 	<filter>
 		<filter-name>CharacterEncodingFilter</filter-name>
@@ -62,10 +62,12 @@
 		<servlet-name>MeetingManager</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+	
 	<!-- 
 	<servlet-mapping>
 		<servlet-name>default</servlet-name>
 		<url-pattern>*.html</url-pattern>
 	</servlet-mapping>
 	-->
+	
 </web-app>
